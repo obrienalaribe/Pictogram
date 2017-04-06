@@ -13,6 +13,10 @@
 		431912471E95496C00CC8E0D /* Pictogram.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 431912451E95496C00CC8E0D /* Pictogram.xcdatamodeld */; };
 		431912491E95496C00CC8E0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 431912481E95496C00CC8E0D /* Assets.xcassets */; };
 		4319124C1E95496C00CC8E0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4319124A1E95496C00CC8E0D /* LaunchScreen.storyboard */; };
+		431912541E967FA500CC8E0D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431912531E967FA500CC8E0D /* Extensions.swift */; };
+		431912591E96995D00CC8E0D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 431912581E96995D00CC8E0D /* GoogleService-Info.plist */; };
+		4319125D1E96A4AD00CC8E0D /* BrandColours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4319125C1E96A4AD00CC8E0D /* BrandColours.swift */; };
+		D99B65AC682AAE463D6EC548 /* Pods_Pictogram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4ECBA88CC2274FBDB29E527 /* Pods_Pictogram.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,12 @@
 		431912481E95496C00CC8E0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4319124B1E95496C00CC8E0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4319124D1E95496C00CC8E0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		431912531E967FA500CC8E0D /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		431912581E96995D00CC8E0D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4319125C1E96A4AD00CC8E0D /* BrandColours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandColours.swift; sourceTree = "<group>"; };
+		7D12EABECB2EC8D908A2E88C /* Pods-Pictogram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pictogram.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pictogram/Pods-Pictogram.release.xcconfig"; sourceTree = "<group>"; };
+		B79F500FA87FDD21F979A120 /* Pods-Pictogram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pictogram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pictogram/Pods-Pictogram.debug.xcconfig"; sourceTree = "<group>"; };
+		F4ECBA88CC2274FBDB29E527 /* Pods_Pictogram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pictogram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D99B65AC682AAE463D6EC548 /* Pods_Pictogram.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +53,8 @@
 			children = (
 				4319123D1E95496C00CC8E0D /* Pictogram */,
 				4319123C1E95496C00CC8E0D /* Products */,
+				494935B03E973901E29B4BA9 /* Pods */,
+				533847EE37D2AD3B948E5C79 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +69,7 @@
 		4319123D1E95496C00CC8E0D /* Pictogram */ = {
 			isa = PBXGroup;
 			children = (
+				431912551E968CC600CC8E0D /* Modules */,
 				4319123E1E95496C00CC8E0D /* AppDelegate.swift */,
 				431912401E95496C00CC8E0D /* ViewController.swift */,
 				431912421E95496C00CC8E0D /* Main.storyboard */,
@@ -63,8 +77,51 @@
 				4319124A1E95496C00CC8E0D /* LaunchScreen.storyboard */,
 				4319124D1E95496C00CC8E0D /* Info.plist */,
 				431912451E95496C00CC8E0D /* Pictogram.xcdatamodeld */,
+				431912581E96995D00CC8E0D /* GoogleService-Info.plist */,
+				431912531E967FA500CC8E0D /* Extensions.swift */,
+				4319125C1E96A4AD00CC8E0D /* BrandColours.swift */,
 			);
 			path = Pictogram;
+			sourceTree = "<group>";
+		};
+		431912551E968CC600CC8E0D /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				431912561E968CD100CC8E0D /* User */,
+			);
+			name = Modules;
+			sourceTree = "<group>";
+		};
+		431912561E968CD100CC8E0D /* User */ = {
+			isa = PBXGroup;
+			children = (
+				431912571E968D0000CC8E0D /* Auth */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		431912571E968D0000CC8E0D /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Auth;
+			sourceTree = "<group>";
+		};
+		494935B03E973901E29B4BA9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B79F500FA87FDD21F979A120 /* Pods-Pictogram.debug.xcconfig */,
+				7D12EABECB2EC8D908A2E88C /* Pods-Pictogram.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		533847EE37D2AD3B948E5C79 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F4ECBA88CC2274FBDB29E527 /* Pods_Pictogram.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +131,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 431912501E95496C00CC8E0D /* Build configuration list for PBXNativeTarget "Pictogram" */;
 			buildPhases = (
+				84F80026E76B18F4C723A5C4 /* [CP] Check Pods Manifest.lock */,
 				431912371E95496B00CC8E0D /* Sources */,
 				431912381E95496B00CC8E0D /* Frameworks */,
 				431912391E95496B00CC8E0D /* Resources */,
+				4AD71E268F691C3B8A59EBA6 /* [CP] Embed Pods Frameworks */,
+				9BCE4226F02B47E552E896F0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -128,6 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4319124C1E95496C00CC8E0D /* LaunchScreen.storyboard in Resources */,
+				431912591E96995D00CC8E0D /* GoogleService-Info.plist in Resources */,
 				431912491E95496C00CC8E0D /* Assets.xcassets in Resources */,
 				431912441E95496C00CC8E0D /* Main.storyboard in Resources */,
 			);
@@ -135,14 +196,64 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4AD71E268F691C3B8A59EBA6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pictogram/Pods-Pictogram-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		84F80026E76B18F4C723A5C4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9BCE4226F02B47E552E896F0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pictogram/Pods-Pictogram-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		431912371E95496B00CC8E0D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4319125D1E96A4AD00CC8E0D /* BrandColours.swift in Sources */,
 				431912411E95496C00CC8E0D /* ViewController.swift in Sources */,
 				431912471E95496C00CC8E0D /* Pictogram.xcdatamodeld in Sources */,
 				4319123F1E95496C00CC8E0D /* AppDelegate.swift in Sources */,
+				431912541E967FA500CC8E0D /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,12 +374,13 @@
 		};
 		431912511E95496C00CC8E0D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B79F500FA87FDD21F979A120 /* Pods-Pictogram.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7289W83XQQ;
 				INFOPLIST_FILE = Pictogram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = alaribe.Pictogram;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alaribe.Pictogram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -276,12 +388,13 @@
 		};
 		431912521E95496C00CC8E0D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D12EABECB2EC8D908A2E88C /* Pods-Pictogram.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7289W83XQQ;
 				INFOPLIST_FILE = Pictogram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = alaribe.Pictogram;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alaribe.Pictogram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -306,6 +419,7 @@
 				431912521E95496C00CC8E0D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
