@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import FirebaseAuth
 
 
 class UserProfileController: UICollectionViewController {
@@ -17,10 +18,12 @@ class UserProfileController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchUser()
         collectionView?.backgroundColor = .white
         collectionView?.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerId")
         collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellId")
-        fetchUser()
+        
+        setupLogoutBtn()
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -76,6 +79,35 @@ class UserProfileController: UICollectionViewController {
         }) { (err) in
             print("Failed to fetch user:", err)
         }
+    }
+    
+    fileprivate func setupLogoutBtn() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear"), style: .plain, target: self, action: #selector(handleLogout) )
+        navigationController?.navigationBar.tintColor = BrandColours.primary
+    }
+    
+    func handleLogout() {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        alertController.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { (_) in
+            
+            do {
+                try FIRAuth.auth()?.signOut()
+                
+                let loginController = LoginController()
+                let navController = UINavigationController(rootViewController: loginController)
+                self.present(navController, animated: true, completion: nil)
+                
+            } catch let signoutErr {
+                print("Failed to sign out:", signoutErr)
+            }
+            
+            
+        }))
+            
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        present(alertController, animated: true, completion: nil)
     }
 }
 

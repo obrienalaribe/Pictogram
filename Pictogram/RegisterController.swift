@@ -11,7 +11,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 
-class ViewController: UIViewController {
+class RegisterController: UIViewController {
 
     let plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
@@ -63,14 +63,30 @@ class ViewController: UIViewController {
         btn.isEnabled = false
         return btn
     }()
+    
+    let hasAccountBtn: UIButton = {
+        let btn = UIButton(type: .system)
+        let attributedTitle = NSMutableAttributedString(string: "Already have an account? ", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.lightGray])
+        attributedTitle.append(NSAttributedString(string: "Sign In.", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14), NSForegroundColorAttributeName: BrandColours.primaryDark]))
+        btn.setAttributedTitle(attributedTitle, for: .normal)
+        btn.setTitle("Don't have an account? Sign Up.", for: .normal)
+        btn.addTarget(self, action: #selector(handleHaveAccountAction), for: .touchUpInside)
+        return btn
+    }()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = .white
         view.addSubview(plusPhotoButton)
-       
+        
+        view.addSubview(hasAccountBtn)
+        
         plusPhotoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         plusPhotoButton.anchor(top: view.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 40, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 140, height: 140)
+        
+        hasAccountBtn.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
         
         setupInputFields()
     }
@@ -129,7 +145,7 @@ class ViewController: UIViewController {
                 
                 let values = [uid: dictionaryValues]
                 
-                // Presenter
+                // Save user details
                 
                 FIRDatabase.database().reference().child("users").updateChildValues(values, withCompletionBlock: { (err, ref) in
                     
@@ -138,9 +154,15 @@ class ViewController: UIViewController {
                         return
                     }
                     
-                    print("Successfully saved user")
+                    print("Successfully registered user")
+                    
+                    guard let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController else {return}
+                    
+                    mainTabBarController.setupViewControllers()
+                    
+                    self.dismiss(animated: true, completion: nil)
                 })
-
+                
 
             })
            
@@ -169,11 +191,15 @@ class ViewController: UIViewController {
         present(imagePickerController, animated: true, completion: nil)
     }
     
+    
+    func handleHaveAccountAction() {
+       _ = navigationController?.popViewController(animated: true)
+    }
   
 }
 
 
-extension ViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension RegisterController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
@@ -193,34 +219,3 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
     
 }
 
-
-extension UIView {
-    func anchor(top: NSLayoutYAxisAnchor?, left: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, right: NSLayoutXAxisAnchor?, paddingTop: CGFloat, paddingLeft: CGFloat, paddingBottom: CGFloat, paddingRight: CGFloat, width: CGFloat, height: CGFloat) -> Void {
-        
-        translatesAutoresizingMaskIntoConstraints = false
-
-        if let top = top {
-            self.topAnchor.constraint(equalTo: top, constant: paddingTop).isActive = true
-        }
-        
-        if let left = left {
-            self.leftAnchor.constraint(equalTo: left, constant: paddingLeft).isActive = true
-        }
-        
-        if let bottom = bottom {
-            bottomAnchor.constraint(equalTo: bottom, constant: paddingBottom).isActive = true
-        }
-        
-        if let right = right {
-            rightAnchor.constraint(equalTo: right, constant: -paddingRight).isActive = true
-        }
-        
-        if width != 0 {
-            widthAnchor.constraint(equalToConstant: width).isActive = true
-        }
-        
-        if height != 0 {
-            heightAnchor.constraint(equalToConstant: height).isActive = true
-        }
-    }
-}

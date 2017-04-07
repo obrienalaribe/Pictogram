@@ -12,7 +12,7 @@
 		04E8DA1E1E96F2C8007AAE98 /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E8DA1D1E96F2C8007AAE98 /* UserProfileHeader.swift */; };
 		04E8DA201E96F6FC007AAE98 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E8DA1F1E96F6FC007AAE98 /* User.swift */; };
 		4319123F1E95496C00CC8E0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4319123E1E95496C00CC8E0D /* AppDelegate.swift */; };
-		431912411E95496C00CC8E0D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431912401E95496C00CC8E0D /* ViewController.swift */; };
+		431912411E95496C00CC8E0D /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431912401E95496C00CC8E0D /* RegisterController.swift */; };
 		431912441E95496C00CC8E0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 431912421E95496C00CC8E0D /* Main.storyboard */; };
 		431912471E95496C00CC8E0D /* Pictogram.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 431912451E95496C00CC8E0D /* Pictogram.xcdatamodeld */; };
 		431912491E95496C00CC8E0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 431912481E95496C00CC8E0D /* Assets.xcassets */; };
@@ -20,6 +20,11 @@
 		431912541E967FA500CC8E0D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431912531E967FA500CC8E0D /* Extensions.swift */; };
 		431912591E96995D00CC8E0D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 431912581E96995D00CC8E0D /* GoogleService-Info.plist */; };
 		4319125D1E96A4AD00CC8E0D /* BrandColours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4319125C1E96A4AD00CC8E0D /* BrandColours.swift */; };
+		43C2F89C1E97864E008144FA /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2F89B1E97864E008144FA /* LoginController.swift */; };
+		43C2F8A01E97A9C4008144FA /* PhotoSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2F89F1E97A9C4008144FA /* PhotoSelectorController.swift */; };
+		43C2F8A21E97D380008144FA /* PhotoSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2F8A11E97D380008144FA /* PhotoSelectorCell.swift */; };
+		43C2F8A41E97DB38008144FA /* PhotoSelectorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2F8A31E97DB38008144FA /* PhotoSelectorHeader.swift */; };
+		43C2F8A61E97EA84008144FA /* SharePhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2F8A51E97EA84008144FA /* SharePhotoController.swift */; };
 		D99B65AC682AAE463D6EC548 /* Pods_Pictogram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4ECBA88CC2274FBDB29E527 /* Pods_Pictogram.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,7 +35,7 @@
 		04E8DA1F1E96F6FC007AAE98 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4319123B1E95496C00CC8E0D /* Pictogram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pictogram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4319123E1E95496C00CC8E0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		431912401E95496C00CC8E0D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		431912401E95496C00CC8E0D /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		431912431E95496C00CC8E0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		431912461E95496C00CC8E0D /* Pictogram.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pictogram.xcdatamodel; sourceTree = "<group>"; };
 		431912481E95496C00CC8E0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -39,6 +44,11 @@
 		431912531E967FA500CC8E0D /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		431912581E96995D00CC8E0D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4319125C1E96A4AD00CC8E0D /* BrandColours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandColours.swift; sourceTree = "<group>"; };
+		43C2F89B1E97864E008144FA /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		43C2F89F1E97A9C4008144FA /* PhotoSelectorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelectorController.swift; sourceTree = "<group>"; };
+		43C2F8A11E97D380008144FA /* PhotoSelectorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelectorCell.swift; sourceTree = "<group>"; };
+		43C2F8A31E97DB38008144FA /* PhotoSelectorHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelectorHeader.swift; sourceTree = "<group>"; };
+		43C2F8A51E97EA84008144FA /* SharePhotoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharePhotoController.swift; sourceTree = "<group>"; };
 		7D12EABECB2EC8D908A2E88C /* Pods-Pictogram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pictogram.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pictogram/Pods-Pictogram.release.xcconfig"; sourceTree = "<group>"; };
 		B79F500FA87FDD21F979A120 /* Pods-Pictogram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pictogram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pictogram/Pods-Pictogram.debug.xcconfig"; sourceTree = "<group>"; };
 		F4ECBA88CC2274FBDB29E527 /* Pods_Pictogram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pictogram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,9 +96,8 @@
 		4319123D1E95496C00CC8E0D /* Pictogram */ = {
 			isa = PBXGroup;
 			children = (
-				431912551E968CC600CC8E0D /* Modules */,
 				4319123E1E95496C00CC8E0D /* AppDelegate.swift */,
-				431912401E95496C00CC8E0D /* ViewController.swift */,
+				431912551E968CC600CC8E0D /* Modules */,
 				431912421E95496C00CC8E0D /* Main.storyboard */,
 				431912481E95496C00CC8E0D /* Assets.xcassets */,
 				4319124A1E95496C00CC8E0D /* LaunchScreen.storyboard */,
@@ -105,6 +114,7 @@
 		431912551E968CC600CC8E0D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				43C2F89E1E97A99E008144FA /* Photo */,
 				431912561E968CD100CC8E0D /* User */,
 			);
 			name = Modules;
@@ -123,8 +133,53 @@
 		431912571E968D0000CC8E0D /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				43C2F89D1E979203008144FA /* Register */,
+				43C2F89A1E978630008144FA /* Login */,
 			);
 			name = Auth;
+			sourceTree = "<group>";
+		};
+		43C2F89A1E978630008144FA /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				43C2F89B1E97864E008144FA /* LoginController.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		43C2F89D1E979203008144FA /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				431912401E95496C00CC8E0D /* RegisterController.swift */,
+			);
+			name = Register;
+			sourceTree = "<group>";
+		};
+		43C2F89E1E97A99E008144FA /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				43C2F8A81E97F271008144FA /* Share */,
+				43C2F8A71E97F25E008144FA /* Selector */,
+			);
+			name = Photo;
+			sourceTree = "<group>";
+		};
+		43C2F8A71E97F25E008144FA /* Selector */ = {
+			isa = PBXGroup;
+			children = (
+				43C2F89F1E97A9C4008144FA /* PhotoSelectorController.swift */,
+				43C2F8A11E97D380008144FA /* PhotoSelectorCell.swift */,
+				43C2F8A31E97DB38008144FA /* PhotoSelectorHeader.swift */,
+			);
+			name = Selector;
+			sourceTree = "<group>";
+		};
+		43C2F8A81E97F271008144FA /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				43C2F8A51E97EA84008144FA /* SharePhotoController.swift */,
+			);
+			name = Share;
 			sourceTree = "<group>";
 		};
 		494935B03E973901E29B4BA9 /* Pods */ = {
@@ -270,14 +325,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				4319125D1E96A4AD00CC8E0D /* BrandColours.swift in Sources */,
-				431912411E95496C00CC8E0D /* ViewController.swift in Sources */,
+				43C2F8A21E97D380008144FA /* PhotoSelectorCell.swift in Sources */,
+				431912411E95496C00CC8E0D /* RegisterController.swift in Sources */,
 				04E8DA191E96E695007AAE98 /* MainTabBarController.swift in Sources */,
+				43C2F8A61E97EA84008144FA /* SharePhotoController.swift in Sources */,
 				04E8DA1E1E96F2C8007AAE98 /* UserProfileHeader.swift in Sources */,
 				431912471E95496C00CC8E0D /* Pictogram.xcdatamodeld in Sources */,
 				04E8DA201E96F6FC007AAE98 /* User.swift in Sources */,
 				04E8DA1B1E96EAF0007AAE98 /* UserProfileController.swift in Sources */,
 				4319123F1E95496C00CC8E0D /* AppDelegate.swift in Sources */,
+				43C2F8A41E97DB38008144FA /* PhotoSelectorHeader.swift in Sources */,
 				431912541E967FA500CC8E0D /* Extensions.swift in Sources */,
+				43C2F8A01E97A9C4008144FA /* PhotoSelectorController.swift in Sources */,
+				43C2F89C1E97864E008144FA /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
