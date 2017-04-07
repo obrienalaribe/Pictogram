@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04E8DA191E96E695007AAE98 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E8DA181E96E695007AAE98 /* MainTabBarController.swift */; };
+		04E8DA1B1E96EAF0007AAE98 /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E8DA1A1E96EAF0007AAE98 /* UserProfileController.swift */; };
+		04E8DA1E1E96F2C8007AAE98 /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E8DA1D1E96F2C8007AAE98 /* UserProfileHeader.swift */; };
+		04E8DA201E96F6FC007AAE98 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E8DA1F1E96F6FC007AAE98 /* User.swift */; };
 		4319123F1E95496C00CC8E0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4319123E1E95496C00CC8E0D /* AppDelegate.swift */; };
 		431912411E95496C00CC8E0D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431912401E95496C00CC8E0D /* ViewController.swift */; };
 		431912441E95496C00CC8E0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 431912421E95496C00CC8E0D /* Main.storyboard */; };
@@ -20,6 +24,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04E8DA181E96E695007AAE98 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		04E8DA1A1E96EAF0007AAE98 /* UserProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
+		04E8DA1D1E96F2C8007AAE98 /* UserProfileHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileHeader.swift; sourceTree = "<group>"; };
+		04E8DA1F1E96F6FC007AAE98 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4319123B1E95496C00CC8E0D /* Pictogram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pictogram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4319123E1E95496C00CC8E0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		431912401E95496C00CC8E0D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +56,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04E8DA1C1E96F2AD007AAE98 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				04E8DA1A1E96EAF0007AAE98 /* UserProfileController.swift */,
+				04E8DA1D1E96F2C8007AAE98 /* UserProfileHeader.swift */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
 		431912321E95496B00CC8E0D = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +97,7 @@
 				431912581E96995D00CC8E0D /* GoogleService-Info.plist */,
 				431912531E967FA500CC8E0D /* Extensions.swift */,
 				4319125C1E96A4AD00CC8E0D /* BrandColours.swift */,
+				04E8DA181E96E695007AAE98 /* MainTabBarController.swift */,
 			);
 			path = Pictogram;
 			sourceTree = "<group>";
@@ -95,7 +113,9 @@
 		431912561E968CD100CC8E0D /* User */ = {
 			isa = PBXGroup;
 			children = (
+				04E8DA1C1E96F2AD007AAE98 /* Profile */,
 				431912571E968D0000CC8E0D /* Auth */,
+				04E8DA1F1E96F6FC007AAE98 /* User.swift */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -251,7 +271,11 @@
 			files = (
 				4319125D1E96A4AD00CC8E0D /* BrandColours.swift in Sources */,
 				431912411E95496C00CC8E0D /* ViewController.swift in Sources */,
+				04E8DA191E96E695007AAE98 /* MainTabBarController.swift in Sources */,
+				04E8DA1E1E96F2C8007AAE98 /* UserProfileHeader.swift in Sources */,
 				431912471E95496C00CC8E0D /* Pictogram.xcdatamodeld in Sources */,
+				04E8DA201E96F6FC007AAE98 /* User.swift in Sources */,
+				04E8DA1B1E96EAF0007AAE98 /* UserProfileController.swift in Sources */,
 				4319123F1E95496C00CC8E0D /* AppDelegate.swift in Sources */,
 				431912541E967FA500CC8E0D /* Extensions.swift in Sources */,
 			);
