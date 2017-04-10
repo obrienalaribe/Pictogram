@@ -1,8 +1,8 @@
 //
-//  UserProfileHeader.swift
+//  MockProfileHeader.swift
 //  Pictogram
 //
-//  Created by mac on 4/6/17.
+//  Created by mac on 4/9/17.
 //  Copyright © 2017 obrien. All rights reserved.
 //
 
@@ -13,75 +13,56 @@ class UserProfileHeader: UICollectionViewCell {
     
     var user: User? {
         didSet {
-            print("did set \(user?.username)")
-            setupProfileImage()
-            usernameLabel.text = "Leeds university"
+            guard let profileImageUrl = user?.profileImageUrl else {return}
+            profileImageView.loadImage(urlString: profileImageUrl)
         }
     }
-    
-    let profileImageView : UIImageView = {
+    let backgroundImageView : UIImageView = {
         let iv = UIImageView()
-        iv.backgroundColor = .red
+        iv.image = #imageLiteral(resourceName: "profile_image")
+        iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
-        iv.layer.cornerRadius = 80/2
+        iv.backgroundColor = BrandColours.primary
+//        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+//        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//        blurEffectView.frame = iv.bounds
+//        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        iv.addSubview(blurEffectView)
         return iv
     }()
     
-    let gridButton : UIButton = {
-        let btn = UIButton(type: .system)
-        btn.setImage(#imageLiteral(resourceName: "grid"), for: .normal)
-        return btn
+    let profileImageView : CustomImageView = {
+        let iv = CustomImageView()
+        iv.image = #imageLiteral(resourceName: "profile_image")
+        iv.contentMode = .scaleAspectFill
+        iv.backgroundColor = .red
+        iv.layer.cornerRadius = 10
+        iv.layer.borderWidth = 3
+        iv.layer.borderColor = BrandColours.tertiaryDark.cgColor
+        iv.clipsToBounds = true
+        return iv
     }()
     
-    
-    let listButton : UIButton = {
-        let btn = UIButton(type: .system)
-        btn.setImage(#imageLiteral(resourceName: "list"), for: .normal)
-        btn.tintColor = UIColor(white: 0, alpha: 0.2)
-        return btn
+    let metricLabel : UILabel = {
+        let label = UILabel()
+        label.text = "1,000"
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.addImage(imageName: "gold-star")
+        label.backgroundColor = .black
+        return label
     }()
-
     
-    let bookmarkButton : UIButton = {
-        let btn = UIButton(type: .system)
-        btn.setImage(#imageLiteral(resourceName: "ribbon"), for: .normal)
-        btn.tintColor = UIColor(white: 0, alpha: 0.2)
-        return btn
-    }()
-
     let usernameLabel : UILabel = {
         let label = UILabel()
-        label.text = "username"
-        label.font = UIFont.boldSystemFont(ofSize: 14)
-        label.textAlignment = .center
-        return label
-    }()
-    
-    let postsLabel: UILabel = {
-        let label = UILabel()
-        let attributedText = NSMutableAttributedString(string: "11\n", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14)] )
-        attributedText.append(NSAttributedString(string: "posts", attributes: [NSForegroundColorAttributeName: UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: 14)]))
+        let attributedText = NSMutableAttributedString(string: "OBrien Alaribe", attributes: [NSForegroundColorAttributeName: BrandColours.primaryDark, NSFontAttributeName: UIFont.systemFont(ofSize: 14)] )
         label.attributedText = attributedText
-        label.numberOfLines = 0
         label.textAlignment = .center
         return label
     }()
     
-    let followersLabel: UILabel = {
+    let courseLabel: UILabel = {
         let label = UILabel()
-        let attributedText = NSMutableAttributedString(string: "0\n", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14)] )
-        attributedText.append(NSAttributedString(string: "followers", attributes: [NSForegroundColorAttributeName: UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: 14)]))
-        label.attributedText = attributedText
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        return label
-    }()
-
-    
-    let followingLabel: UILabel = {
-        let label = UILabel()
-        let attributedText = NSMutableAttributedString(string: "0\n", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14)] )
-        attributedText.append(NSAttributedString(string: "following", attributes: [NSForegroundColorAttributeName: UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: 14)]))
+        let attributedText = NSMutableAttributedString(string: "Economics & Management Studies", attributes: [NSForegroundColorAttributeName: BrandColours.primaryDark, NSFontAttributeName: UIFont.systemFont(ofSize: 14)] )
         label.attributedText = attributedText
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -90,99 +71,69 @@ class UserProfileHeader: UICollectionViewCell {
 
     let editProfileBtn: UIButton = {
         let btn = UIButton(type: .system)
-        btn.setTitle("Edit Profile", for: .normal)
-        btn.setTitleColor(.black, for: .normal)
+        btn.setTitle("Edit", for: .normal)
         btn.titleLabel?.font  = UIFont.boldSystemFont(ofSize: 14)
         btn.layer.borderColor = BrandColours.primary.cgColor
         btn.setTitleColor(BrandColours.primary, for: .normal)
         btn.layer.borderWidth = 1
-        btn.layer.cornerRadius = 3
+        btn.layer.cornerRadius = 10
         return btn
     }()
-
+    
+    
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        
+        addSubview(backgroundImageView)
+        backgroundImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 200)
         addSubview(profileImageView)
+        profileImageView.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 120, height: 120)
+        profileImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        profileImageView.centerYAnchor.constraint(equalTo: backgroundImageView.bottomAnchor).isActive = true
+   
+        addSubview(metricLabel)
+        metricLabel.anchor(top: nil, left: nil, bottom: profileImageView.topAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 12, paddingRight: 0, width: 0, height: 20)
+        metricLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+
         
-        profileImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 80, height: 80)
+        let infoView = UIStackView(arrangedSubviews: [usernameLabel, courseLabel])
+
+        addSubview(infoView)
+        infoView.distribution = .fillEqually
+        infoView.axis = .vertical
         
-        setupBottomToolbar()
-        
-        addSubview(usernameLabel)
-        
-        usernameLabel.anchor(top: profileImageView.bottomAnchor, left: leftAnchor, bottom: gridButton.topAnchor, right: rightAnchor, paddingTop: 4, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 0)
-        
-        setupUserStatsView()
+        infoView.anchor(top: profileImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 12, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
         
         addSubview(editProfileBtn)
-        editProfileBtn.anchor(top: postsLabel.bottomAnchor, left: postsLabel.leftAnchor, bottom: nil, right: followingLabel.rightAnchor, paddingTop: 2, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 34)
-    }
-    
-    fileprivate func setupBottomToolbar() {
-        
-        let topDividerView = UIView()
-        topDividerView.backgroundColor = UIColor.lightGray
-        
-        let bottomDividerView = UIView()
-        bottomDividerView.backgroundColor = UIColor.lightGray
-        
-        let stackView = UIStackView(arrangedSubviews: [gridButton, listButton, bookmarkButton])
-        stackView.distribution = .fillEqually
+        editProfileBtn.anchor(top: infoView.bottomAnchor, left: nil, bottom: bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 5, paddingRight: 0, width: 100, height: 30)
+        editProfileBtn.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
 
-        addSubview(stackView)
-        addSubview(topDividerView)
-        addSubview(bottomDividerView)
-        
-        stackView.anchor(top: nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
-        
-        topDividerView.anchor(top: stackView.topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
-        
-        bottomDividerView.anchor(top: stackView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
-    }
-    
-    fileprivate func setupUserStatsView() {
-        let stackView = UIStackView(arrangedSubviews: [postsLabel, followersLabel, followingLabel])
-        addSubview(stackView)
-        stackView.distribution = .fillEqually
-        
-        stackView.anchor(top: topAnchor, left: profileImageView.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 50)
-        
-    }
-    
-    
-    fileprivate func setupProfileImage() {
 
-        guard let profileImageUrl = user?.profileImageUrl else {return}
-        guard let url = URL(string: profileImageUrl) else {return}
-        
-        URLSession.shared.dataTask(with: url) { (data, response, err) in
-            
-            if let err = err {
-                print("Failed to fetch profile image", err)
-            }
-            
-            guard let data = data else {return}
-            
-            let image = UIImage(data: data)
-            
-            //need to get back on the main queue
-            
-            DispatchQueue.main.async {
-                self.profileImageView.image = image
-            }
-        }.resume()
+    }
+ 
+    
+       
+}
 
+extension UILabel
+{
+    func addImage(imageName: String)
+    {
+        let attachment: NSTextAttachment = NSTextAttachment()
+        attachment.image = UIImage(named: imageName)
+        let attachmentString: NSAttributedString = NSAttributedString(attachment: attachment)
         
+            let strLabelText: NSAttributedString = NSAttributedString(string: " \(self.text!)", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 16),NSForegroundColorAttributeName: BrandColours.tertiaryDark])
+            let mutableAttachmentString: NSMutableAttributedString = NSMutableAttributedString(attributedString: attachmentString)
+            mutableAttachmentString.append(strLabelText)
+            
+            self.attributedText = mutableAttachmentString
         
     }
     
-  
-    
-    
+   
 }
