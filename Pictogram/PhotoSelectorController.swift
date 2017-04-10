@@ -95,9 +95,9 @@ class PhotoSelectorControllerController: UICollectionViewController, UICollectio
     }
     
     func handleNext() {
-        let sharePhotoController = SharePhotoController()
-        sharePhotoController.selectedImage = header?.photoImageView.image
-        navigationController?.pushViewController(sharePhotoController, animated: true)
+        let memeEditorController = MemeEditorController()
+        memeEditorController.selectedImage = header?.photoImageView.image
+        navigationController?.pushViewController(memeEditorController, animated: true)
     }
     
     override var prefersStatusBarHidden: Bool {

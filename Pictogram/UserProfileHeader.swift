@@ -15,7 +15,7 @@ class UserProfileHeader: UICollectionViewCell {
         didSet {
             print("did set \(user?.username)")
             setupProfileImage()
-            usernameLabel.text = user?.username
+            usernameLabel.text = "Leeds university"
         }
     }
     
@@ -53,6 +53,7 @@ class UserProfileHeader: UICollectionViewCell {
         let label = UILabel()
         label.text = "username"
         label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.textAlignment = .center
         return label
     }()
     
@@ -92,7 +93,8 @@ class UserProfileHeader: UICollectionViewCell {
         btn.setTitle("Edit Profile", for: .normal)
         btn.setTitleColor(.black, for: .normal)
         btn.titleLabel?.font  = UIFont.boldSystemFont(ofSize: 14)
-        btn.layer.borderColor = UIColor.lightGray.cgColor
+        btn.layer.borderColor = BrandColours.primary.cgColor
+        btn.setTitleColor(BrandColours.primary, for: .normal)
         btn.layer.borderWidth = 1
         btn.layer.cornerRadius = 3
         return btn
@@ -150,9 +152,6 @@ class UserProfileHeader: UICollectionViewCell {
         stackView.distribution = .fillEqually
         
         stackView.anchor(top: topAnchor, left: profileImageView.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 50)
-
-        stackView.backgroundColor = .red
-        
         
     }
     
