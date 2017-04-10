@@ -7,22 +7,34 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
 
 private let cellId = "Cell"
 private let headerId = "Header"
 
+
 class MockUserProfileController: UICollectionViewController {
+    private var posts = [Post]()
+    var refreshCtrl: UIRefreshControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.refreshCtrl = UIRefreshControl()
+        
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear"), style: .plain, target: self, action: #selector(handleLogout) )
+        navigationController?.navigationBar.tintColor = BrandColours.tertiaryDark
+        
+        navigationItem.title = "OBrien"
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        self.collectionView!.register(UserProfilePhotoCell.self, forCellWithReuseIdentifier: cellId)
         self.collectionView?.register(MockProfileHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
         collectionView?.backgroundColor = .white
         self.collectionView?.delegate = self
 
-        // Do any additional setup after loading the view.
+        fetchPosts()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -50,8 +62,7 @@ class MockUserProfileController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 5
+        return posts.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -62,9 +73,9 @@ class MockUserProfileController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! UserProfilePhotoCell
         
-        cell.backgroundColor = BrandColours.primaryDark
+        cell.post = posts[indexPath.item]
     
         // Configure the cell
     
@@ -89,6 +100,38 @@ class MockUserProfileController: UICollectionViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+    
+    fileprivate func fetchPosts() {
+        guard let uid = FIRAuth.auth()?.currentUser?.uid else {return}
+        let ref = FIRDatabase.database().reference().child("posts").child(uid)
+        
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            guard let dictionaries = snapshot.value as? [String: Any] else {return}
+            
+            dictionaries.forEach({ (key, value) in
+                //                print("Key \(key), Value: \(value)")
+                
+                guard let dictionary = value as? [String:Any] else {return}
+                
+                let post = Post(dictionary: dictionary)
+                print(post.imageUrl)
+                self.posts.append(post)
+            })
+            
+            self.collectionView?.reloadData()
+        }) { (err) in
+            print("Failed to fetch user memes")
+        }
+        
+        
+        
+    }
+    
+    func handleLogout() {
+        
+    }
+
     
 }
 

@@ -33,7 +33,7 @@ class MainTabBarController: UITabBarController {
         
         //home
 //        let homeNavController = templateNavContoller(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"))
-        let homeNavController = templateNavContoller(unselectedImage: #imageLiteral(resourceName: "profile_unselected"), selectedImage: #imageLiteral(resourceName: "profile_selected"), rootViewController:  UserProfileController(collectionViewLayout: UICollectionViewFlowLayout()))
+        let homeNavController = templateNavContoller(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController:  MockUserProfileController(collectionViewLayout: UICollectionViewFlowLayout()))
         
         //search
         let searchNavController = templateNavContoller(unselectedImage: #imageLiteral(resourceName: "search_unselected"), selectedImage: #imageLiteral(resourceName: "search_selected"))
@@ -50,6 +50,7 @@ class MainTabBarController: UITabBarController {
         tabBar.tintColor = BrandColours.primary
         
         viewControllers = [homeNavController, searchNavController, plusNavController, notificationNavController, userProfileNavController]
+        
         
         guard let items = tabBar.items else {return}
         

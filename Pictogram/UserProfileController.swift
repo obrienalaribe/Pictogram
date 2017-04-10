@@ -14,8 +14,8 @@ import FirebaseAuth
 
 class UserProfileController: UICollectionViewController {
     
-    var user: User?
-    var posts = [Post]()
+    private var user: User?
+    private var posts = [Post]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
