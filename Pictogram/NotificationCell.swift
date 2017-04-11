@@ -8,12 +8,12 @@
 
 import UIKit
 
-class NoticationCell: UICollectionViewCell {
+class NotificationCell: UICollectionViewCell {
     
     var user: User? {
         didSet {
             guard let profileImageUrl = user?.profileImageUrl else {return}
-            profileImageView.loadImage(urlString: profileImageUrl)
+            userImageView.loadImage(urlString: profileImageUrl)
         }
     }
     
@@ -43,6 +43,8 @@ class NoticationCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        backgroundColor = BrandColours.primaryDark
         
         addSubview(userImageView)
         userImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 50, height: 50)

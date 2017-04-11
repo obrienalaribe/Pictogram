@@ -17,7 +17,8 @@ class LoginController: UIViewController {
         view.addSubview(logoImageView)
         
         logoImageView.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 200, height: 200)
-        logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 13).isActive = true
         logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         logoImageView.contentMode = .scaleAspectFit
         view.backgroundColor = BrandColours.primaryDark
@@ -84,6 +85,9 @@ class LoginController: UIViewController {
     }
     
     func setupInputFields() {
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        
         let stackView = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, loginBtn])
         stackView.axis = .vertical
         stackView.spacing = 10
@@ -140,3 +144,10 @@ class LoginController: UIViewController {
     }
 
   }
+
+extension LoginController : UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}

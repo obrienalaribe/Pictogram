@@ -14,6 +14,8 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        bootstrapLookAndFeel()
+        
         self.delegate = self
         
         if FIRAuth.auth()?.currentUser == nil {
@@ -26,30 +28,29 @@ class MainTabBarController: UITabBarController {
         }
         
         setupViewControllers()
-        
     }
+    
     
     func setupViewControllers() {
         
         //home
 //        let homeNavController = templateNavContoller(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"))
-        let homeNavController = templateNavContoller(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController:  MockUserProfileController(collectionViewLayout: UICollectionViewFlowLayout()))
+        let homeNavController = templateNavContoller(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController:  HomeController(collectionViewLayout: UICollectionViewFlowLayout()))
         
-        //search
-        let searchNavController = templateNavContoller(unselectedImage: #imageLiteral(resourceName: "search_unselected"), selectedImage: #imageLiteral(resourceName: "search_selected"))
+        //events
+        let eventNavController = templateNavContoller(unselectedImage: #imageLiteral(resourceName: "event_unselected"), selectedImage: #imageLiteral(resourceName: "event_selected"), rootViewController:  EventsController(collectionViewLayout: UICollectionViewFlowLayout()))
 
         // add
         let plusNavController = templateNavContoller(unselectedImage: #imageLiteral(resourceName: "plus_unselected"), selectedImage: #imageLiteral(resourceName: "plus_unselected"))
         
         //notification
-        let notificationNavController = templateNavContoller(unselectedImage: #imageLiteral(resourceName: "like_unselected"), selectedImage: #imageLiteral(resourceName: "like_selected"))
+        let notificationNavController = templateNavContoller(unselectedImage: #imageLiteral(resourceName: "bell_unselected"), selectedImage: #imageLiteral(resourceName: "bell_selected"), rootViewController: NotificationController(collectionViewLayout: UICollectionViewFlowLayout()))
         
         //user profile
         let userProfileNavController = templateNavContoller(unselectedImage: #imageLiteral(resourceName: "profile_unselected"), selectedImage: #imageLiteral(resourceName: "profile_selected"), rootViewController:  UserProfileController(collectionViewLayout: UICollectionViewFlowLayout()))
 
-        tabBar.tintColor = BrandColours.primary
         
-        viewControllers = [homeNavController, searchNavController, plusNavController, notificationNavController, userProfileNavController]
+        viewControllers = [homeNavController, eventNavController, plusNavController, notificationNavController, userProfileNavController]
         
         
         guard let items = tabBar.items else {return}
@@ -68,6 +69,7 @@ class MainTabBarController: UITabBarController {
         navController.tabBarItem.selectedImage = selectedImage
         return navController
     }
+  
 }
 
 extension MainTabBarController : UITabBarControllerDelegate {
@@ -82,4 +84,40 @@ extension MainTabBarController : UITabBarControllerDelegate {
         }
         return true
     }
+}
+
+// Setup Custom Theme Across App
+extension MainTabBarController {
+    
+    func bootstrapLookAndFeel(){
+        var navigationBarAppearance = UINavigationBar.appearance()
+        
+        navigationBarAppearance.barTintColor = BrandColours.secondary
+        
+        let font = UIFont(name: "Avenir Next", size: 20)!
+        
+        let attributes: [String: AnyObject] = [
+            NSFontAttributeName: font,
+            NSForegroundColorAttributeName: BrandColours.primary
+        ]
+        
+        navigationBarAppearance.titleTextAttributes = attributes
+        
+        //Setup Tab Bar
+        
+        var tabBarAppereance = UITabBar.appearance()
+        
+        tabBarAppereance.barTintColor = BrandColours.secondary
+        tabBarAppereance.tintColor = BrandColours.primary
+        
+        var textfieldApperance = UITextField.appearance()
+        textfieldApperance.tintColor = .black
+        
+        // Setup Font Here (http://stackoverflow.com/questions/28180449/using-custom-font-for-entire-ios-app-swift)
+        //        UILabel.appearance().substituteFontName = "Avenir Next"
+        //        UITextView.appearance().substituteFontName = "Avenir Next"
+        //        UITextField.appearance().substituteFontName = "Avenir Next"
+        //        UIButton.appearance().substituteFontName = "Avenir Next"
+    }
+
 }

@@ -7,88 +7,103 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
 
 private let reuseIdentifier = "Cell"
 
-class HomeControllerController: UICollectionViewController {
+class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
+    var posts = [Post]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        collectionView?.backgroundColor = BrandColours.secondary
+        self.collectionView!.register(HomePostCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.setupNavigationItems()
+        fetchPosts()
     }
-
+    
     override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        //flush image cache when it is too large (You could also check creation date of post and remove oldest ones)
+        imageCache.removeAll()
     }
+    
+    func setupNavigationItems() {
+        navigationItem.title = "SLOCO"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "camera"), style: .plain, target: self, action: #selector(showCamera))
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search"), style: .plain, target: self, action: #selector(showNotifications))
+        navigationController?.navigationBar.tintColor = BrandColours.primary
     }
-    */
-
+    
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return posts.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! HomePostCell
         // Configure the cell
+        cell.post = posts[indexPath.item]
     
         return cell
     }
+    
+    // MARK: UICollectionViewDelegateFlowLayout
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: view.frame.width, height: (view.frame.height - 50))
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(5, 0, 5, 0)
+    }
 
     // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
+    
     /*
     // Uncomment this method to specify if the specified item should be selected
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return true
     }
     */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
+    fileprivate func fetchPosts() {
+        DaoManager.shared.fetchCollections(model: "posts") { (err, dictionary) in
+            
+            if let err = err {
+                print("HomeController failed to fetch posts")
+            }
+            
+            print("Successfully fetched using generic DAO")
+                        
+            let post = Post(dictionary: dictionary)
+            print(post.imageUrl)
+            self.posts.append(post)
+            self.collectionView?.reloadData()
+            
+        }
     }
-    */
+    
+    func showNotifications(){
+        let notificationController = NotificationController(collectionViewLayout: UICollectionViewFlowLayout())
+        navigationController?.pushViewController(notificationController, animated: true)
+    }
+    
+    func showCamera() {
+        print("camera ...")
+    }
+    
+    
+
 
 }

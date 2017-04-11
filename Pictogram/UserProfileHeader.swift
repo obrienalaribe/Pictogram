@@ -43,18 +43,26 @@ class UserProfileHeader: UICollectionViewCell {
         return iv
     }()
     
+    let metricView : UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        view.layer.cornerRadius = 10
+        view.alpha = 0.6
+        return view
+    }()
+    
     let metricLabel : UILabel = {
         let label = UILabel()
-        label.text = "1,000"
-        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.text = "10000"
+        label.font = UIFont.boldSystemFont(ofSize: 12)
         label.addImage(imageName: "gold-star")
-        label.backgroundColor = .black
+        label.textAlignment = .center
         return label
     }()
     
     let usernameLabel : UILabel = {
         let label = UILabel()
-        let attributedText = NSMutableAttributedString(string: "OBrien Alaribe", attributes: [NSForegroundColorAttributeName: BrandColours.primaryDark, NSFontAttributeName: UIFont.systemFont(ofSize: 14)] )
+        let attributedText = NSMutableAttributedString(string: "Ebukz", attributes: [NSForegroundColorAttributeName: BrandColours.primaryDark, NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14)] )
         label.attributedText = attributedText
         label.textAlignment = .center
         return label
@@ -68,15 +76,31 @@ class UserProfileHeader: UICollectionViewCell {
         label.numberOfLines = 0
         return label
     }()
+    
+    
+    let uniLabel: UILabel = {
+        let label = UILabel()
+        let attributedText = NSMutableAttributedString(string: "The University of Leeds", attributes: [NSForegroundColorAttributeName: BrandColours.primaryDark, NSFontAttributeName: UIFont.systemFont(ofSize: 14)] )
+        label.attributedText = attributedText
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }()
 
     let editProfileBtn: UIButton = {
         let btn = UIButton(type: .system)
         btn.setTitle("Edit", for: .normal)
-        btn.titleLabel?.font  = UIFont.boldSystemFont(ofSize: 14)
+        btn.titleLabel?.font  = UIFont.boldSystemFont(ofSize: 12)
         btn.layer.borderColor = BrandColours.primary.cgColor
         btn.setTitleColor(BrandColours.primary, for: .normal)
+        btn.setImage(#imageLiteral(resourceName: "edit").withRenderingMode(.alwaysTemplate), for: .normal)
+        btn.tintColor = BrandColours.primary
         btn.layer.borderWidth = 1
         btn.layer.cornerRadius = 10
+        btn.addTarget(self, action: #selector(editProfile), for: .touchUpInside)
+        btn.contentEdgeInsets = UIEdgeInsetsMake(0, -12, 2, 2)
+        btn.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0)
+        btn.addTarget(self, action: #selector(editProfile), for: .touchUpInside)
         return btn
     }()
     
@@ -95,24 +119,30 @@ class UserProfileHeader: UICollectionViewCell {
         profileImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         profileImageView.centerYAnchor.constraint(equalTo: backgroundImageView.bottomAnchor).isActive = true
    
-        addSubview(metricLabel)
-        metricLabel.anchor(top: nil, left: nil, bottom: profileImageView.topAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 12, paddingRight: 0, width: 0, height: 20)
-        metricLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-
+        addSubview(editProfileBtn)
+        editProfileBtn.anchor(top: backgroundImageView.bottomAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 5, paddingLeft: 0, paddingBottom: 0, paddingRight: 5, width: 80, height: 35)
         
-        let infoView = UIStackView(arrangedSubviews: [usernameLabel, courseLabel])
-
+        addSubview(metricView)
+        
+        metricView.anchor(top: nil, left: nil, bottom: profileImageView.topAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 12, paddingRight: 0, width: 80, height: 40)
+        
+        metricView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        
+        addSubview(metricLabel)
+        metricLabel.anchor(top: metricView.topAnchor, left: metricView.leftAnchor, bottom: metricView.bottomAnchor, right: metricView.rightAnchor, paddingTop: 2, paddingLeft: 2, paddingBottom: 2, paddingRight: 2, width: 0, height: 0)
+        let infoView = UIStackView(arrangedSubviews: [usernameLabel, courseLabel, uniLabel])
+        
         addSubview(infoView)
         infoView.distribution = .fillEqually
         infoView.axis = .vertical
+        infoView.spacing = 1.5
         
-        infoView.anchor(top: profileImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 12, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
-        
-        addSubview(editProfileBtn)
-        editProfileBtn.anchor(top: infoView.bottomAnchor, left: nil, bottom: bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 5, paddingRight: 0, width: 100, height: 30)
-        editProfileBtn.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        infoView.anchor(top: profileImageView.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 12, paddingLeft: 0, paddingBottom: 12, paddingRight: 0, width: 0, height: 0)
 
-
+    }
+    
+    func editProfile(){
+        print("show profile editor")
     }
  
     
@@ -124,7 +154,7 @@ extension UILabel
     func addImage(imageName: String)
     {
         let attachment: NSTextAttachment = NSTextAttachment()
-        attachment.image = UIImage(named: imageName)
+        attachment.image = UIImage(named: imageName)?.withRenderingMode(.alwaysOriginal)
         let attachmentString: NSAttributedString = NSAttributedString(attachment: attachment)
         
             let strLabelText: NSAttributedString = NSAttributedString(string: " \(self.text!)", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 16),NSForegroundColorAttributeName: BrandColours.tertiaryDark])
@@ -137,3 +167,4 @@ extension UILabel
     
    
 }
+

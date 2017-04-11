@@ -6,4 +6,36 @@
 //  Copyright © 2017 obrien. All rights reserved.
 //
 
-import Foundation
+import FirebaseAuth
+import FirebaseDatabase
+
+class DaoManager {
+    
+    static let shared = DaoManager()
+    
+    func fetchCollections(model: String, completionHandler: @escaping (_ error: Error?, _ dictionary: [String: Any]) -> ()) {
+        guard let uid = FIRAuth.auth()?.currentUser?.uid else {return}
+            let ref = FIRDatabase.database().reference().child(model).child(uid)
+            
+            ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                guard let dictionaries = snapshot.value as? [String: Any] else {return}
+                
+                dictionaries.forEach({ (key, value) in
+                    //                print("Key \(key), Value: \(value)")
+                    
+                    guard let dictionary = value as? [String:Any] else {return}
+                    
+                    completionHandler(nil, dictionary)
+                    
+                })
+                
+            }) { (err) in
+                completionHandler(err, [:])
+                print("Failed to fetch generic collection from DB")
+            }
+            
+        }
+
+    
+}
