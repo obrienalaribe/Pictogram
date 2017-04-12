@@ -16,6 +16,8 @@ private let headerId = "Header"
 
 class UserProfileController: UICollectionViewController {
     private var posts = [Post]()
+    private var user : User?
+    
     var refreshCtrl: UIRefreshControl!
 
     override func viewDidLoad() {
@@ -107,6 +109,7 @@ class UserProfileController: UICollectionViewController {
         ref.queryOrdered(byChild: "creationDate").observe(.childAdded, with: { (snapshot) in
             guard let dictionary = snapshot.value as? [String: Any] else {return}
             
+            
             let post = Post(dictionary: dictionary)
             self.posts.append(post)
             self.collectionView?.reloadData()
@@ -118,7 +121,7 @@ class UserProfileController: UICollectionViewController {
 
     
     fileprivate func setupLogoutBtn() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear"), style: .plain, target: self, action: #selector(handleLogout) )
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "settings"), style: .plain, target: self, action: #selector(handleLogout) )
         navigationController?.navigationBar.tintColor = BrandColours.primary
     }
     
@@ -130,6 +133,7 @@ class UserProfileController: UICollectionViewController {
             do {
                 try FIRAuth.auth()?.signOut()
                 
+                print("CACHE CONTAINS \(AppCache.shared.images)")
                 let loginController = LoginController()
                 let navController = UINavigationController(rootViewController: loginController)
                 self.present(navController, animated: true, completion: nil)

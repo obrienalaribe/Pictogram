@@ -8,7 +8,8 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+private let cellId = "Cell"
+
 
 class NotificationController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
@@ -19,7 +20,8 @@ class NotificationController: UICollectionViewController, UICollectionViewDelega
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(NotificationCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(NotificationCell.self, forCellWithReuseIdentifier: cellId)
+
         
         collectionView?.backgroundColor = BrandColours.secondary
         
@@ -49,7 +51,7 @@ class NotificationController: UICollectionViewController, UICollectionViewDelega
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! NotificationCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! NotificationCell
         
     
         // Configure the cell
@@ -62,6 +64,7 @@ class NotificationController: UICollectionViewController, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: 80)
     }
+    
     // MARK: UICollectionViewDelegate
 
     /*

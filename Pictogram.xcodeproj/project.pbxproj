@@ -15,6 +15,9 @@
 		04E8DA291E99B240007AAE98 /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E8DA281E99B240007AAE98 /* UserProfileHeader.swift */; };
 		04E8DA2C1E9AEBCF007AAE98 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E8DA2B1E9AEBCF007AAE98 /* Post.swift */; };
 		04E8DA2E1E9AFF88007AAE98 /* UserProfilePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E8DA2D1E9AFF88007AAE98 /* UserProfilePhotoCell.swift */; };
+		04E8DA301E9D9759007AAE98 /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E8DA2F1E9D9759007AAE98 /* HomeHeader.swift */; };
+		04E8DA321E9D9D4B007AAE98 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E8DA311E9D9D4B007AAE98 /* SearchViewController.swift */; };
+		04E8DA341E9DABB8007AAE98 /* AppCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E8DA331E9DABB8007AAE98 /* AppCache.swift */; };
 		4319123F1E95496C00CC8E0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4319123E1E95496C00CC8E0D /* AppDelegate.swift */; };
 		431912411E95496C00CC8E0D /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431912401E95496C00CC8E0D /* RegisterController.swift */; };
 		431912441E95496C00CC8E0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 431912421E95496C00CC8E0D /* Main.storyboard */; };
@@ -51,6 +54,9 @@
 		04E8DA281E99B240007AAE98 /* UserProfileHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileHeader.swift; sourceTree = "<group>"; };
 		04E8DA2B1E9AEBCF007AAE98 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		04E8DA2D1E9AFF88007AAE98 /* UserProfilePhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfilePhotoCell.swift; sourceTree = "<group>"; };
+		04E8DA2F1E9D9759007AAE98 /* HomeHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
+		04E8DA311E9D9D4B007AAE98 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		04E8DA331E9DABB8007AAE98 /* AppCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCache.swift; sourceTree = "<group>"; };
 		4319123B1E95496C00CC8E0D /* Pictogram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pictogram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4319123E1E95496C00CC8E0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		431912401E95496C00CC8E0D /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
@@ -113,6 +119,13 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		04E8DA351E9E5CAF007AAE98 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Chat;
+			sourceTree = "<group>";
+		};
 		431912321E95496B00CC8E0D = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +165,7 @@
 		431912551E968CC600CC8E0D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				04E8DA351E9E5CAF007AAE98 /* Chat */,
 				43758BDA1E9BE799006B4952 /* Events */,
 				432B764D1E9BCA7100DC07F9 /* Notifications */,
 				432B76461E9BA11400DC07F9 /* Home */,
@@ -187,6 +201,7 @@
 				431912531E967FA500CC8E0D /* Extensions.swift */,
 				432B76441E9B9A2200DC07F9 /* CustomImageView.swift */,
 				432B764B1E9BA74B00DC07F9 /* DaoManager.swift */,
+				04E8DA331E9DABB8007AAE98 /* AppCache.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -194,8 +209,10 @@
 		432B76461E9BA11400DC07F9 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				04E8DA2F1E9D9759007AAE98 /* HomeHeader.swift */,
 				432B76471E9BA13600DC07F9 /* HomeController.swift */,
 				432B76491E9BA32B00DC07F9 /* HomePostCell.swift */,
+				04E8DA311E9D9D4B007AAE98 /* SearchViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -415,6 +432,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04E8DA301E9D9759007AAE98 /* HomeHeader.swift in Sources */,
 				432B76531E9BCAF300DC07F9 /* NotificationCell.swift in Sources */,
 				4319125D1E96A4AD00CC8E0D /* BrandColours.swift in Sources */,
 				43758BDE1E9BE800006B4952 /* EventCell.swift in Sources */,
@@ -429,6 +447,8 @@
 				431912471E95496C00CC8E0D /* Pictogram.xcdatamodeld in Sources */,
 				432B76451E9B9A2200DC07F9 /* CustomImageView.swift in Sources */,
 				436569B61E9CD73800216D8E /* Event.swift in Sources */,
+				04E8DA321E9D9D4B007AAE98 /* SearchViewController.swift in Sources */,
+				04E8DA341E9DABB8007AAE98 /* AppCache.swift in Sources */,
 				04E8DA201E96F6FC007AAE98 /* User.swift in Sources */,
 				432B76481E9BA13600DC07F9 /* HomeController.swift in Sources */,
 				04E8DA271E99AEBB007AAE98 /* UserProfileController.swift in Sources */,

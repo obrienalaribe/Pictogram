@@ -8,7 +8,6 @@
 
 import UIKit
 
-var imageCache = [String: UIImage]()
 
 class CustomImageView: UIImageView {
 
@@ -18,15 +17,16 @@ class CustomImageView: UIImageView {
         
         lastURLUsedToLoadImage = urlString
         
-        if let cachedImage = imageCache[urlString] {
+        if let cachedImage = AppCache.shared.images.object(forKey: urlString as NSString) {
+            // use the cached version
             self.image = cachedImage
             return
         }
         
-        print("fetching image over network")
         guard let url = URL(string: urlString) else {return}
         
         URLSession.shared.dataTask(with: url) { (data, response, err) in
+            print("fetching image over network")
             if let err = err {
                 print("Failed to fetch post image", err)
                 return
@@ -40,9 +40,9 @@ class CustomImageView: UIImageView {
             }
             
             guard let imageData = data else {return}
-            let photoImage = UIImage(data: imageData)
+            guard let photoImage = UIImage(data: imageData) else {return}
             
-            imageCache[url.absoluteString] = photoImage
+            AppCache.shared.images.setObject(photoImage, forKey: url.absoluteString as NSString)
             
             DispatchQueue.main.async {
                 self.image = photoImage

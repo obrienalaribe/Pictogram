@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         
         window = UIWindow()
-        let nav = UINavigationController(rootViewController: HomeController(collectionViewLayout: UICollectionViewFlowLayout()))
+        let nav = UINavigationController(rootViewController: SearchViewController(collectionViewLayout: UICollectionViewFlowLayout()))
         window?.rootViewController = MainTabBarController()
         return true
     }

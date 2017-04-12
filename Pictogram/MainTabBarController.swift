@@ -40,8 +40,8 @@ class MainTabBarController: UITabBarController {
         //events
         let eventNavController = templateNavContoller(unselectedImage: #imageLiteral(resourceName: "event_unselected"), selectedImage: #imageLiteral(resourceName: "event_selected"), rootViewController:  EventsController(collectionViewLayout: UICollectionViewFlowLayout()))
 
-        // add
-        let plusNavController = templateNavContoller(unselectedImage: #imageLiteral(resourceName: "plus_unselected"), selectedImage: #imageLiteral(resourceName: "plus_unselected"))
+        // camera
+        let cameraController = templateNavContoller(unselectedImage: #imageLiteral(resourceName: "plus_unselected"), selectedImage: #imageLiteral(resourceName: "plus_unselected"))
         
         //notification
         let notificationNavController = templateNavContoller(unselectedImage: #imageLiteral(resourceName: "bell_unselected"), selectedImage: #imageLiteral(resourceName: "bell_selected"), rootViewController: NotificationController(collectionViewLayout: UICollectionViewFlowLayout()))
@@ -50,7 +50,7 @@ class MainTabBarController: UITabBarController {
         let userProfileNavController = templateNavContoller(unselectedImage: #imageLiteral(resourceName: "profile_unselected"), selectedImage: #imageLiteral(resourceName: "profile_selected"), rootViewController:  UserProfileController(collectionViewLayout: UICollectionViewFlowLayout()))
 
         
-        viewControllers = [homeNavController, eventNavController, plusNavController, notificationNavController, userProfileNavController]
+        viewControllers = [homeNavController, eventNavController, cameraController, notificationNavController, userProfileNavController]
         
         
         guard let items = tabBar.items else {return}
@@ -102,6 +102,7 @@ extension MainTabBarController {
         ]
         
         navigationBarAppearance.titleTextAttributes = attributes
+        
         
         //Setup Tab Bar
         

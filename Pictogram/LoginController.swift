@@ -18,7 +18,7 @@ class LoginController: UIViewController {
         
         logoImageView.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 200, height: 200)
         
-        logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 13).isActive = true
+        logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         logoImageView.contentMode = .scaleAspectFit
         view.backgroundColor = BrandColours.primaryDark

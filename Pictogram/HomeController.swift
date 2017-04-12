@@ -16,6 +16,25 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 
     var posts = [Post]()
     
+    let titleView : UILabel = {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        label.text = "SLOCO"
+
+        label.isUserInteractionEnabled = true
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        return label
+    }()
+    
+    
+    let logoImageView: UIImageView = {
+        let iv = UIImageView(image: #imageLiteral(resourceName: "sloco_logo"))
+        iv.frame = CGRect(x: 0, y: -5, width: 40, height: 35)
+        iv.clipsToBounds = true
+        iv.contentMode = .scaleAspectFit
+        iv.isUserInteractionEnabled = true
+        return iv
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.backgroundColor = BrandColours.secondary
@@ -24,16 +43,16 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         fetchPosts()
     }
     
-    override func didReceiveMemoryWarning() {
-        //flush image cache when it is too large (You could also check creation date of post and remove oldest ones)
-        imageCache.removeAll()
-    }
-    
     func setupNavigationItems() {
         navigationItem.title = "SLOCO"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "camera"), style: .plain, target: self, action: #selector(showCamera))
+//        navigationController?.navigationBar.topItem?.titleView = logoImageView
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.scrollToTop))
+        
+        logoImageView.addGestureRecognizer(tap)
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search_unselected"), style: .plain, target: self, action: #selector(showSearch))
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search"), style: .plain, target: self, action: #selector(showNotifications))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "chat"), style: .plain, target: self, action: #selector(showNotifications))
         navigationController?.navigationBar.tintColor = BrandColours.primary
     }
     
@@ -61,7 +80,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: view.frame.width, height: (view.frame.height - 50))
+        var height : CGFloat = 50 + 8 + 8 //userinfo + profile image height
+        height += view.frame.width + 50 //50 = space for bottom buttons
+        return CGSize(width: view.frame.width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -85,7 +106,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             }
             
             print("Successfully fetched using generic DAO")
-                        
+            
+            
             let post = Post(dictionary: dictionary)
             print(post.imageUrl)
             self.posts.append(post)
@@ -99,7 +121,12 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         navigationController?.pushViewController(notificationController, animated: true)
     }
     
-    func showCamera() {
+    func scrollToTop() {
+        let indexPath = IndexPath(item: 0, section: 0)
+        collectionView?.scrollToItem(at: indexPath, at: .top, animated: true)
+    }
+    
+    func showSearch() {
         print("camera ...")
     }
     

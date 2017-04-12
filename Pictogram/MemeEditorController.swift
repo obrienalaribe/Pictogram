@@ -5,7 +5,6 @@
 //  Created by Obrien Alaribe on 07/04/2017.
 //  Copyright © 2017 obrien. All rights reserved.
 //
-
 import UIKit
 import FirebaseStorage
 import FirebaseDatabase
@@ -18,7 +17,7 @@ class MemeEditorController: UIViewController, UITextFieldDelegate{
             self.imageView.image = selectedImage
         }
     }
-
+    
     let topTextField : UITextField = {
         let tf = UITextField()
         tf.text = "Enter top caption here"
@@ -26,14 +25,14 @@ class MemeEditorController: UIViewController, UITextFieldDelegate{
         tf.clearsOnBeginEditing = true
         tf.tintColor = .white
         tf.addTarget(self, action: #selector(handleEditing(_:)), for: .editingDidBegin)
-//        tf.backgroundColor = .red
+        //        tf.backgroundColor = .red
         return tf
     }()
     
     let bottomTextField : UITextField = {
         let tf = UITextField()
         tf.clearsOnBeginEditing = true
-//        tf.backgroundColor = .yellow
+        //        tf.backgroundColor = .yellow
         tf.text = "Enter bottom caption here"
         tf.adjustsFontSizeToFitWidth = true
         tf.tintColor = .white
@@ -67,12 +66,12 @@ class MemeEditorController: UIViewController, UITextFieldDelegate{
     }()
     
     var raiseViewForKeyboard = false
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.toolbar.isHidden = false
         subscribeToKeyboardNotifications()
-
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .plain, target: self, action: #selector(handleMemeUpload))
         
         applyMemeTextAttributes([topTextField, bottomTextField])
@@ -132,7 +131,7 @@ class MemeEditorController: UIViewController, UITextFieldDelegate{
             field.textAlignment = NSTextAlignment.center
         }
     }
-
+    
     
     func handleEditing(_ sender : UITextField) {
         if sender.isEqual(bottomTextField)  {
@@ -211,9 +210,6 @@ class MemeEditorController: UIViewController, UITextFieldDelegate{
             print("Successfully saved post to DB")
             self.dismiss(animated: true, completion: nil)
         }
-       
+        
     }
 }
-
-
-
