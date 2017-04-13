@@ -36,6 +36,36 @@ class DaoManager {
             }
             
         }
-
     
-}
+    
+    
+    func fetchMetadata(model: String, completionHandler: @escaping (_ error: Error?, _ result: [Entity]) -> ()) {
+        let ref = FIRDatabase.database().reference().child(model)
+        var entities = [Entity]()
+        
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            guard let dictionaries = snapshot.value as? [String: Any] else {return}
+            
+            dictionaries.forEach({ (key, value) in
+                                print("Key \(key), Value: \(value)")
+                
+                guard let dictionary = value as? [String:Any] else {return}
+                
+                
+                let entity = Entity(dictionary: dictionary, type: .University)
+                
+                entities.append(entity)
+                
+            })
+            
+            completionHandler(nil, entities)
+
+            
+        }) { (err) in
+            completionHandler(err, [Entity]())
+            print("Failed to fetch generic collection for \(model) from DB")
+        }
+        
+    }
+  }

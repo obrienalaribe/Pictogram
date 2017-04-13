@@ -16,7 +16,12 @@ private let headerId = "Header"
 
 class UserProfileController: UICollectionViewController {
     private var posts = [Post]()
-    private var user : User?
+    private var user : User? {
+        didSet {
+            guard let user = user else {return}
+            setupUserDetails(user: user)
+        }
+    }
     
     var refreshCtrl: UIRefreshControl!
 
@@ -33,7 +38,9 @@ class UserProfileController: UICollectionViewController {
         self.collectionView?.delegate = self
 
 //        fetchPosts()
+        fetchUser()
         fetchOrderedPosts()
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -67,13 +74,13 @@ class UserProfileController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! UserProfileHeader
-                
+        header.user = self.user
+        header.masterViewController = self
         return header
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! UserProfilePhotoCell
-        
         cell.post = posts[indexPath.item]
     
         // Configure the cell
@@ -100,6 +107,18 @@ class UserProfileController: UICollectionViewController {
         return .lightContent
     }
     
+    fileprivate func fetchUser() {
+        guard let uid = FIRAuth.auth()?.currentUser?.uid else {return}
+        
+        FIRDatabase.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            print(snapshot.value ?? "")
+            guard let userDictionary = snapshot.value as? [String:Any] else {return}
+            self.user = User(dictionary: userDictionary)
+        }) { (err) in
+            print("Failed to fetch user", err)
+        }
+    }
+    
     fileprivate func fetchOrderedPosts() {
         guard let uid = FIRAuth.auth()?.currentUser?.uid else {return}
         
@@ -119,13 +138,21 @@ class UserProfileController: UICollectionViewController {
         }
     }
 
+    fileprivate func setupUserDetails(user: User) {
+        navigationItem.title = user.username
+    }
     
     fileprivate func setupLogoutBtn() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "settings"), style: .plain, target: self, action: #selector(handleLogout) )
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "settings"), style: .plain, target: self, action: #selector(handleSettingsAction) )
         navigationController?.navigationBar.tintColor = BrandColours.primary
     }
     
-    func handleLogout() {
+    func editProfile(){
+        let viewController = UserProfileEditController()
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func handleSettingsAction() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         alertController.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { (_) in

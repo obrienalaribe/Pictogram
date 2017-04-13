@@ -15,4 +15,5 @@ class BrandColours {
     static let secondary = UIColor.white
     static let tertiary = UIColor(white: 1, alpha: 0.03)
     static let tertiaryDark = UIColor.rgb(red: 240, green: 240, blue: 240, alpha: 1)
+    static let label = UIColor.darkGray
 }

@@ -16,6 +16,8 @@ class MainTabBarController: UITabBarController {
         
         bootstrapLookAndFeel()
         
+//        DataFactory.shared.persistMetaData(model: "universities", values: ["name": "Leeds College of Arts"])
+        
         self.delegate = self
         
         if FIRAuth.auth()?.currentUser == nil {
@@ -102,7 +104,6 @@ extension MainTabBarController {
         ]
         
         navigationBarAppearance.titleTextAttributes = attributes
-        
         
         //Setup Tab Bar
         

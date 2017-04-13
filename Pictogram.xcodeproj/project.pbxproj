@@ -37,6 +37,10 @@
 		436569B81E9CD91300216D8E /* EventCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436569B71E9CD91300216D8E /* EventCategoryCell.swift */; };
 		43758BDC1E9BE7CD006B4952 /* EventsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43758BDB1E9BE7CD006B4952 /* EventsController.swift */; };
 		43758BDE1E9BE800006B4952 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43758BDD1E9BE800006B4952 /* EventCell.swift */; };
+		437D6A5A1E9F866800A112DB /* UserProfileEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437D6A591E9F866800A112DB /* UserProfileEditController.swift */; };
+		437D6A5D1E9F88A100A112DB /* UserProfileEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437D6A5C1E9F88A100A112DB /* UserProfileEditCell.swift */; };
+		437D6A601E9FB0B200A112DB /* EntitySearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437D6A5F1E9FB0B200A112DB /* EntitySearchTableViewController.swift */; };
+		437D6A641E9FCA3700A112DB /* DataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437D6A631E9FCA3700A112DB /* DataFactory.swift */; };
 		43C2F89C1E97864E008144FA /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2F89B1E97864E008144FA /* LoginController.swift */; };
 		43C2F8A01E97A9C4008144FA /* PhotoSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2F89F1E97A9C4008144FA /* PhotoSelectorController.swift */; };
 		43C2F8A21E97D380008144FA /* PhotoSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2F8A11E97D380008144FA /* PhotoSelectorCell.swift */; };
@@ -78,6 +82,10 @@
 		436569B71E9CD91300216D8E /* EventCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCategoryCell.swift; sourceTree = "<group>"; };
 		43758BDB1E9BE7CD006B4952 /* EventsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsController.swift; sourceTree = "<group>"; };
 		43758BDD1E9BE800006B4952 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		437D6A591E9F866800A112DB /* UserProfileEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileEditController.swift; sourceTree = "<group>"; };
+		437D6A5C1E9F88A100A112DB /* UserProfileEditCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileEditCell.swift; sourceTree = "<group>"; };
+		437D6A5F1E9FB0B200A112DB /* EntitySearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntitySearchTableViewController.swift; sourceTree = "<group>"; };
+		437D6A631E9FCA3700A112DB /* DataFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFactory.swift; sourceTree = "<group>"; };
 		43C2F89B1E97864E008144FA /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		43C2F89F1E97A9C4008144FA /* PhotoSelectorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelectorController.swift; sourceTree = "<group>"; };
 		43C2F8A11E97D380008144FA /* PhotoSelectorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelectorCell.swift; sourceTree = "<group>"; };
@@ -103,6 +111,7 @@
 		04E8DA1C1E96F2AD007AAE98 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				437D6A5B1E9F887300A112DB /* Edit */,
 				04E8DA261E99AEBB007AAE98 /* UserProfileController.swift */,
 				04E8DA281E99B240007AAE98 /* UserProfileHeader.swift */,
 				04E8DA2D1E9AFF88007AAE98 /* UserProfilePhotoCell.swift */,
@@ -150,6 +159,7 @@
 			children = (
 				4319123E1E95496C00CC8E0D /* AppDelegate.swift */,
 				04E8DA181E96E695007AAE98 /* MainTabBarController.swift */,
+				437D6A631E9FCA3700A112DB /* DataFactory.swift */,
 				432B76431E9B9A0F00DC07F9 /* Utils */,
 				431912551E968CC600CC8E0D /* Modules */,
 				431912421E95496C00CC8E0D /* Main.storyboard */,
@@ -243,6 +253,24 @@
 				436569B51E9CD73800216D8E /* Event.swift */,
 			);
 			name = Events;
+			sourceTree = "<group>";
+		};
+		437D6A5B1E9F887300A112DB /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				437D6A5E1E9FB08B00A112DB /* Search */,
+				437D6A591E9F866800A112DB /* UserProfileEditController.swift */,
+				437D6A5C1E9F88A100A112DB /* UserProfileEditCell.swift */,
+			);
+			name = Edit;
+			sourceTree = "<group>";
+		};
+		437D6A5E1E9FB08B00A112DB /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				437D6A5F1E9FB0B200A112DB /* EntitySearchTableViewController.swift */,
+			);
+			name = Search;
 			sourceTree = "<group>";
 		};
 		43C2F89A1E978630008144FA /* Login */ = {
@@ -442,6 +470,7 @@
 				04E8DA191E96E695007AAE98 /* MainTabBarController.swift in Sources */,
 				432B764A1E9BA32B00DC07F9 /* HomePostCell.swift in Sources */,
 				04E8DA2E1E9AFF88007AAE98 /* UserProfilePhotoCell.swift in Sources */,
+				437D6A5D1E9F88A100A112DB /* UserProfileEditCell.swift in Sources */,
 				04E8DA291E99B240007AAE98 /* UserProfileHeader.swift in Sources */,
 				43C2F8A61E97EA84008144FA /* MemeEditorController.swift in Sources */,
 				431912471E95496C00CC8E0D /* Pictogram.xcdatamodeld in Sources */,
@@ -450,6 +479,8 @@
 				04E8DA321E9D9D4B007AAE98 /* SearchViewController.swift in Sources */,
 				04E8DA341E9DABB8007AAE98 /* AppCache.swift in Sources */,
 				04E8DA201E96F6FC007AAE98 /* User.swift in Sources */,
+				437D6A601E9FB0B200A112DB /* EntitySearchTableViewController.swift in Sources */,
+				437D6A5A1E9F866800A112DB /* UserProfileEditController.swift in Sources */,
 				432B76481E9BA13600DC07F9 /* HomeController.swift in Sources */,
 				04E8DA271E99AEBB007AAE98 /* UserProfileController.swift in Sources */,
 				4319123F1E95496C00CC8E0D /* AppDelegate.swift in Sources */,
@@ -461,6 +492,7 @@
 				04E8DA2C1E9AEBCF007AAE98 /* Post.swift in Sources */,
 				432B764C1E9BA74B00DC07F9 /* DaoManager.swift in Sources */,
 				43C2F8A01E97A9C4008144FA /* PhotoSelectorController.swift in Sources */,
+				437D6A641E9FCA3700A112DB /* DataFactory.swift in Sources */,
 				43C2F89C1E97864E008144FA /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

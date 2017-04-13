@@ -17,6 +17,13 @@ class UserProfileHeader: UICollectionViewCell {
             profileImageView.loadImage(urlString: profileImageUrl)
         }
     }
+    
+    var masterViewController : UserProfileController? = nil {
+        didSet{
+            editProfileBtn.addTarget(masterViewController, action: #selector(masterViewController?.editProfile), for: .touchUpInside)
+        }
+    }
+    
     let backgroundImageView : UIImageView = {
         let iv = UIImageView()
         iv.image = #imageLiteral(resourceName: "profile_image")
@@ -35,7 +42,7 @@ class UserProfileHeader: UICollectionViewCell {
         let iv = CustomImageView()
         iv.image = #imageLiteral(resourceName: "profile_image")
         iv.contentMode = .scaleAspectFill
-        iv.backgroundColor = .red
+        iv.image = #imageLiteral(resourceName: "image-placeholder")
         iv.layer.cornerRadius = 10
         iv.layer.borderWidth = 3
         iv.layer.borderColor = BrandColours.tertiaryDark.cgColor
@@ -70,7 +77,7 @@ class UserProfileHeader: UICollectionViewCell {
     
     let courseLabel: UILabel = {
         let label = UILabel()
-        let attributedText = NSMutableAttributedString(string: "Economics & Management Studies", attributes: [NSForegroundColorAttributeName: BrandColours.primaryDark, NSFontAttributeName: UIFont.systemFont(ofSize: 14)] )
+        let attributedText = NSMutableAttributedString(string: "", attributes: [NSForegroundColorAttributeName: BrandColours.primaryDark, NSFontAttributeName: UIFont.systemFont(ofSize: 14)] )
         label.attributedText = attributedText
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -80,7 +87,7 @@ class UserProfileHeader: UICollectionViewCell {
     
     let uniLabel: UILabel = {
         let label = UILabel()
-        let attributedText = NSMutableAttributedString(string: "The University of Leeds", attributes: [NSForegroundColorAttributeName: BrandColours.primaryDark, NSFontAttributeName: UIFont.systemFont(ofSize: 14)] )
+        let attributedText = NSMutableAttributedString(string: "", attributes: [NSForegroundColorAttributeName: BrandColours.primaryDark, NSFontAttributeName: UIFont.systemFont(ofSize: 14)] )
         label.attributedText = attributedText
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -97,10 +104,8 @@ class UserProfileHeader: UICollectionViewCell {
         btn.tintColor = BrandColours.primary
         btn.layer.borderWidth = 1
         btn.layer.cornerRadius = 10
-        btn.addTarget(self, action: #selector(editProfile), for: .touchUpInside)
         btn.contentEdgeInsets = UIEdgeInsetsMake(0, -12, 2, 2)
         btn.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0)
-        btn.addTarget(self, action: #selector(editProfile), for: .touchUpInside)
         return btn
     }()
     
@@ -141,9 +146,7 @@ class UserProfileHeader: UICollectionViewCell {
 
     }
     
-    func editProfile(){
-        print("show profile editor")
-    }
+   
  
     
        
