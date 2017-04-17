@@ -14,15 +14,23 @@ private let headerId = "headerId"
 class UserProfileEditController: UITableViewController {
 
     var fieldNames = ["Username", "Course", "University" ]
-    var universities = ["Leeds", "Becket", "Arts"]
     
-    var userData = ["dsfd","sdfs","test"]
+    var user : User? {
+        didSet{
+            guard let user = user else {return}
+            userData = user.getValues()
+            
+        }
+    }
+    
+    var userData : [String]?
     
     var selectedCell : UserProfileEditCell?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        userData = [String](repeating: "", count:fieldNames.count)
 
         navigationItem.title = "Edit Profile"
         
@@ -65,7 +73,7 @@ class UserProfileEditController: UITableViewController {
  
         // Configure the cell...
         cell.fieldName = fieldNames[indexPath.item]
-        cell.fieldData = userData[indexPath.item]
+        cell.fieldData = userData?[indexPath.item]
         
         return cell
     }
@@ -78,7 +86,7 @@ class UserProfileEditController: UITableViewController {
             view.endEditing(true)
             let viewController = EntitySearchTableViewController()
             viewController.delegate = self
-            navigationController?.pushViewController(EntitySearchTableViewController(), animated: true)
+            navigationController?.pushViewController(viewController, animated: true)
             return
         }
         selectedCell?.textField.becomeFirstResponder()

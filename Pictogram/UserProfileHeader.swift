@@ -21,6 +21,10 @@ class UserProfileHeader: UICollectionViewCell {
     var masterViewController : UserProfileController? = nil {
         didSet{
             editProfileBtn.addTarget(masterViewController, action: #selector(masterViewController?.editProfile), for: .touchUpInside)
+            
+            let tap = UITapGestureRecognizer(target: masterViewController, action: #selector(masterViewController?.handlePhotoUpload))
+            profileImageView.addGestureRecognizer(tap)
+            
         }
     }
     
@@ -30,11 +34,6 @@ class UserProfileHeader: UICollectionViewCell {
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         iv.backgroundColor = BrandColours.primary
-//        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
-//        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-//        blurEffectView.frame = iv.bounds
-//        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        iv.addSubview(blurEffectView)
         return iv
     }()
     
@@ -47,6 +46,7 @@ class UserProfileHeader: UICollectionViewCell {
         iv.layer.borderWidth = 3
         iv.layer.borderColor = BrandColours.tertiaryDark.cgColor
         iv.clipsToBounds = true
+        iv.isUserInteractionEnabled = true
         return iv
     }()
     

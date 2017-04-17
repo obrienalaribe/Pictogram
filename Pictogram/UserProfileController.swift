@@ -23,6 +23,8 @@ class UserProfileController: UICollectionViewController {
         }
     }
     
+    var header: UserProfileHeader!
+    
     var refreshCtrl: UIRefreshControl!
 
     override func viewDidLoad() {
@@ -73,9 +75,9 @@ class UserProfileController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! UserProfileHeader
-        header.user = self.user
-        header.masterViewController = self
+        self.header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! UserProfileHeader
+        self.header.user = self.user
+        self.header.masterViewController = self
         return header
     }
     
@@ -88,15 +90,8 @@ class UserProfileController: UICollectionViewController {
         return cell
     }
 
+    
     // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
     
     // Uncomment this method to specify if the specified item should be selected
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
@@ -177,6 +172,12 @@ class UserProfileController: UICollectionViewController {
         present(alertController, animated: true, completion: nil)
     }
     
+    func handlePhotoUpload() {
+        let imageHandler = ImageHandler()
+        imageHandler.showImageSourceOptions(viewController: self)
+        
+    }
+    
 }
 
 extension UserProfileController : UICollectionViewDelegateFlowLayout {
@@ -185,3 +186,27 @@ extension UserProfileController : UICollectionViewDelegateFlowLayout {
         return CGSize(width: view.frame.width, height: view.frame.height * 0.48)
     }
 }
+
+// MARK: Image Picker
+
+extension UserProfileController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+            print("got edited image")
+            self.header.profileImageView.image = editedImage
+            
+        }else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+            print("got original image")
+            self.header.profileImageView.image = originalImage
+        }
+        
+        //TODO: Forward to DaoManager to forward to DB
+        dismiss(animated: true, completion: nil)
+    }
+
+}
+
+
+

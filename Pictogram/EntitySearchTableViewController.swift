@@ -17,11 +17,7 @@ class EntitySearchTableViewController: UITableViewController {
     var entities = [Entity]()
     var filteredEntities = [Entity]()
     let searchController = UISearchController(searchResultsController: nil)
-    var delegate: EntitySearchDelegate? {
-        didSet {
-            print("delegate set")
-        }
-    }
+    var delegate: EntitySearchDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

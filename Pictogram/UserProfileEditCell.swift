@@ -70,7 +70,7 @@ class UserProfileEditCell: UITableViewCell, UITextFieldDelegate {
         
       
         addSubview(textField)
-        textField.anchor(top: topAnchor, left: field.rightAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 30, width: frame.width * 0.8, height: 0)
+        textField.anchor(top: topAnchor, left: field.rightAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 40, width: frame.width * 0.8, height: 0)
         
         
     }

@@ -21,7 +21,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>We'd like access to your photos to choose your profile picture</string>
+	<string>Access your library to choose a picture</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Use your camera to take a picture</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Impact.ttf</string>

@@ -16,25 +16,20 @@ class NotificationController: UICollectionViewController, UICollectionViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
+        navigationItem.title = "Notifications"
         // Register cell classes
         self.collectionView!.register(NotificationCell.self, forCellWithReuseIdentifier: cellId)
 
+        let layout = collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
         
         collectionView?.backgroundColor = BrandColours.secondary
         
-        setupNavigationButtons()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
-    }
-    
-    fileprivate func setupNavigationButtons() {
-        navigationController?.navigationBar.tintColor = BrandColours.primary
-        navigationController?.navigationBar.backgroundColor = .white
     }
     
     // MARK: UICollectionViewDataSource
@@ -62,7 +57,7 @@ class NotificationController: UICollectionViewController, UICollectionViewDelega
 
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 80)
+        return CGSize(width: view.frame.width, height: 70)
     }
     
     // MARK: UICollectionViewDelegate

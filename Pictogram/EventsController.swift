@@ -24,6 +24,8 @@ class EventsController: UICollectionViewController, UICollectionViewDelegateFlow
         collectionView?.backgroundColor = BrandColours.secondary
 
         navigationItem.title = "Student Events"
+        
+        EventsAPI.shared.fetchAllEvents()
  
         // Do any additional setup after loading the view.
     }
