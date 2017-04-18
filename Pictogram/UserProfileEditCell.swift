@@ -39,7 +39,7 @@ class UserProfileEditCell: UITableViewCell, UITextFieldDelegate {
     
     let textField : UITextField = {
         let tf = UITextField()
-        tf.textColor = BrandColours.label
+        tf.textColor = BrandColours.labelDark
         tf.tintColor = BrandColours.primary
         tf.textAlignment = .right
         tf.returnKeyType = .done

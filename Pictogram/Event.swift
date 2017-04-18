@@ -12,7 +12,7 @@ import Foundation
 
 struct Event {
     var id : String
-    var eventCode: String
+    var code: String
     var name : String
     var venue: Venue
     var imageUrl: String
@@ -29,7 +29,7 @@ struct Event {
     
     init(dictionary: [String:Any]) {
         self.id = dictionary[EventAttributes.id.rawValue] as? String ?? ""
-        self.eventCode = dictionary[EventAttributes.eventCode.rawValue] as? String ?? ""
+        self.code = dictionary[EventAttributes.eventCode.rawValue] as? String ?? ""
         self.name = dictionary[EventAttributes.name.rawValue] as? String ?? ""
         self.venue = Venue(dictionary: dictionary[EventAttributes.venue.rawValue as? String ?? ""] as? [String : Any] ?? [:]) //need test object
         self.imageUrl = dictionary[EventAttributes.imageUrl.rawValue] as? String ?? ""

@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow()
         let nav = UINavigationController(rootViewController: EventsController(collectionViewLayout: UICollectionViewFlowLayout()))
-        window?.rootViewController = nav
+        window?.rootViewController = MainTabBarController()
         return true
     }
 

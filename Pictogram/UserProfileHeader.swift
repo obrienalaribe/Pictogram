@@ -62,7 +62,7 @@ class UserProfileHeader: UICollectionViewCell {
         let label = UILabel()
         label.text = "10000"
         label.font = UIFont.boldSystemFont(ofSize: 12)
-        label.addImage(imageName: "gold-star")
+        label.addImage(imageName: "gold-star", fontSize: 16)
         label.textAlignment = .center
         return label
     }()
@@ -154,13 +154,14 @@ class UserProfileHeader: UICollectionViewCell {
 
 extension UILabel
 {
-    func addImage(imageName: String)
+    func addImage(imageName: String, fontSize: CGFloat)
     {
         let attachment: NSTextAttachment = NSTextAttachment()
         attachment.image = UIImage(named: imageName)?.withRenderingMode(.alwaysOriginal)
         let attachmentString: NSAttributedString = NSAttributedString(attachment: attachment)
         
-            let strLabelText: NSAttributedString = NSAttributedString(string: " \(self.text!)", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 16),NSForegroundColorAttributeName: BrandColours.tertiaryDark])
+            guard let title = self.text else { return }
+            let strLabelText: NSAttributedString = NSAttributedString(string: " \(title)", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: fontSize),NSForegroundColorAttributeName: BrandColours.tertiaryDark])
             let mutableAttachmentString: NSMutableAttributedString = NSMutableAttributedString(attributedString: attachmentString)
             mutableAttachmentString.append(strLabelText)
             

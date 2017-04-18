@@ -45,8 +45,10 @@ class EventsAPI {
         
     }
     
-    func fetchAllEvents() {
-        let apiEndpoint  = "https://www.skiddle.com/api/v1/events/search/?api_key=\(skiddleApiKey)&latitude=53.4839&longitude=-2.2446&radius=5&eventcode=LIVE&order=distance&description=1"
+    func fetchAllEvents(completion: @escaping (_ events: [String:Array<Event>]) -> ()) {
+        let apiEndpoint  = "https://www.skiddle.com/api/v1/events/search/?api_key=\(skiddleApiKey)&latitude=53.8008&longitude=-1.5491&radius=15&order=distance&description=1&limit=100"
+        
+        var eventsDictionary = [String:Array<Event>]()
         
         Alamofire.request(apiEndpoint).validate().responseJSON { response in
             switch response.result {
@@ -55,13 +57,25 @@ class EventsAPI {
 //                print(response["results"])
                 
                 guard let resultset = response["results"] as? Array<Any> else {return}
-                guard let eventDictionary = resultset[0] as? Dictionary<String,Any> else {return}
                 
-                print(eventDictionary)
-                print("==========================")
-
-                let event = Event(dictionary: eventDictionary)
-                print(event)
+                print(resultset.count)
+                for result in resultset {
+                    if let eventDictionary = result as? Dictionary<String,Any> {
+                        let event = Event(dictionary: eventDictionary)
+                        
+                        if eventsDictionary[event.code] != nil {
+                            eventsDictionary[event.code]?.append(event)
+                        }else {
+                            var eventCategory = [Event]()
+                            eventCategory.append(event)
+                            print("added \(event.code)")
+                            eventsDictionary[event.code] = eventCategory
+                        }
+                    }
+                }
+                
+                completion(eventsDictionary)
+                print("\(eventsDictionary.count)")
                 
             case .failure(let error):
                 print(error)

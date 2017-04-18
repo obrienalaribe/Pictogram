@@ -21,6 +21,7 @@ struct User {
     }
     
     func getValues() -> [String]{
+        //for use in user profile
         return [self.username, self.profileImageUrl]
     }
 }

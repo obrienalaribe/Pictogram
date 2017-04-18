@@ -37,7 +37,19 @@ class DaoManager {
             
         }
     
-    
+    func fetchSingleEntity(model: String, id: String, completionHandler: @escaping (_ error: Error?, _ dictionary: [String: Any]) -> ()){
+        let ref = FIRDatabase.database().reference().child(model).child(id)
+            
+            ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            print(snapshot.value ?? "empty model snapshot")
+            
+            guard let dictionary = snapshot.value as? [String:Any] else {return}
+            completionHandler(nil, dictionary)
+        }) { (err) in
+            print("Failed to fetch user", err)
+            completionHandler(err,[:])
+        }
+    }
     
     func fetchMetadata(model: String, completionHandler: @escaping (_ error: Error?, _ result: [Entity]) -> ()) {
         let ref = FIRDatabase.database().reference().child(model)

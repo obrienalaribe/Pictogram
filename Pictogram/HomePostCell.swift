@@ -14,8 +14,8 @@ class HomePostCell: UICollectionViewCell {
         didSet {
             guard let postImageUrl = post?.imageUrl else {return}
             postImageView.loadImage(urlString: postImageUrl)
-            
-            userInfo.attributedText = setupUserLabel(username: "obrienalaribe", university: "University of Leeds")
+             guard let username = post?.user.username else { return }
+            userInfo.attributedText = setupUserLabel(username: username, university: "University of Leeds")
         }
     }
     

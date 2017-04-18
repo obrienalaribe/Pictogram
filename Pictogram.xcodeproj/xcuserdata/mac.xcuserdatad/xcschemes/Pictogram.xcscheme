@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4319123A1E95496B00CC8E0D"
-               BuildableName = "Pictogram.app"
-               BlueprintName = "Pictogram"
-               ReferencedContainer = "container:SLOCO.xcodeproj">
+               BuildableName = "Pictogramam.app"
+               BlueprintName = "Pictogramam"
+               ReferencedContainer = "container:Pictogram.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "04E8DA421EA4DDCF007AAE98"
-               BuildableName = "PictogramTests.xctest"
-               BlueprintName = "PictogramTests"
-               ReferencedContainer = "container:SLOCO.xcodeproj">
+               BuildableName = "PictogramamTests.xctest"
+               BlueprintName = "PictogramamTests"
+               ReferencedContainer = "container:Pictogram.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4319123A1E95496B00CC8E0D"
-            BuildableName = "Pictogram.app"
-            BlueprintName = "Pictogram"
-            ReferencedContainer = "container:SLOCO.xcodeproj">
+            BuildableName = "Pictogramam.app"
+            BlueprintName = "Pictogramam"
+            ReferencedContainer = "container:Pictogram.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -66,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4319123A1E95496B00CC8E0D"
-            BuildableName = "Pictogram.app"
-            BlueprintName = "Pictogram"
-            ReferencedContainer = "container:SLOCO.xcodeproj">
+            BuildableName = "Pictogramam.app"
+            BlueprintName = "Pictogramam"
+            ReferencedContainer = "container:Pictogram.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
@@ -92,9 +92,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4319123A1E95496B00CC8E0D"
-            BuildableName = "Pictogram.app"
-            BlueprintName = "Pictogram"
-            ReferencedContainer = "container:SLOCO.xcodeproj">
+            BuildableName = "Pictogramam.app"
+            BlueprintName = "Pictogramam"
+            ReferencedContainer = "container:Pictogram.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

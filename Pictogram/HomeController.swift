@@ -16,6 +16,14 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 
     var posts = [Post]()
     
+    let searchBar: UISearchBar = {
+        let sb = UISearchBar()
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = .blue
+        sb.isHidden = true
+        sb.showsCancelButton = true
+        return sb
+    }()
+    
     let titleView : UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         label.text = "SLOCO"
@@ -50,10 +58,17 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         logoImageView.addGestureRecognizer(tap)
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search_unselected"), style: .plain, target: self, action: #selector(showSearch))
-
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "chat"), style: .plain, target: self, action: #selector(showNotifications))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search_unselected"), style: .plain, target: self, action: #selector(activateSearch))
         navigationController?.navigationBar.tintColor = BrandColours.primary
+        
+        let navBar =  navigationController?.navigationBar
+        navBar?.addSubview(searchBar)
+        
+        searchBar.anchor(top: navBar?.topAnchor, left: navBar?.leftAnchor, bottom: navBar?.bottomAnchor, right: navBar?.rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 0)
+        
+        searchBar.delegate = self
+
+        
     }
     
     // MARK: UICollectionViewDataSource
@@ -103,19 +118,34 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             
             if let err = err {
                 print("HomeController failed to fetch posts")
+                return
             }
             
             print("Successfully fetched using generic DAO")
             
-            
-            let post = Post(dictionary: dictionary)
-            print(post.imageUrl)
+            let post = Post(user: User(dictionary: [:]), dictionary: dictionary)
             self.posts.append(post)
             self.collectionView?.reloadData()
             
         }
+
+        
+        guard let uid = FIRAuth.auth()?.currentUser?.uid else {return}
+        DaoManager.shared.fetchSingleEntity(model: "users", id: uid, completionHandler: {(err, dictionary) in
+            if err != nil {
+                print("HomeController failed to fetch users")
+                return
+            }
+            
+            print("Successfully fetched user using generic DAO")
+            let user = User(dictionary: dictionary)
+         
+        })
+        
+       
     }
     
+    //Move all these to presenters
     func showNotifications(){
         let notificationController = NotificationController(collectionViewLayout: UICollectionViewFlowLayout())
         navigationController?.pushViewController(notificationController, animated: true)
@@ -126,9 +156,16 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.scrollToItem(at: indexPath, at: .top, animated: true)
     }
     
-    func showSearch() {
-        print("camera ...")
+    func activateSearch() {
+        self.searchBar.isHidden = false
+        self.searchBar.becomeFirstResponder()
     }
+    
+    func deactivateSearch(){
+        self.searchBar.isHidden = true
+        self.searchBar.resignFirstResponder()
+    }
+    
     
     
 

@@ -12,10 +12,19 @@ private let cellId = "cellId"
 
 class EventCategoryCell: UICollectionViewCell {
     
+    var delegate: EventCategoryDelegate!
+    
+    var events = [Event](){
+        didSet {
+            categoryNameLabel.text = events.first?.code
+            eventsCollectioView.reloadData()
+        }
+    }
+    
     let categoryNameLabel : UILabel = {
         let label = UILabel()
-        label.text = "HIP HOP"
-        label.font = UIFont.boldSystemFont(ofSize: 12)
+        label.text = ""
+        label.font = UIFont.boldSystemFont(ofSize: 14)
         label.numberOfLines = 1
         label.textColor = .lightGray
         label.textAlignment = .center
@@ -57,8 +66,6 @@ class EventCategoryCell: UICollectionViewCell {
         addSubview(eventsCollectioView)
         addSubview(divider)
         
-//        eventsCollectioView.backgroundColor = .red
-        
         eventsCollectioView.showsHorizontalScrollIndicator = false
         
         categoryNameLabel.anchor(top: topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 15)
@@ -86,11 +93,13 @@ extension EventCategoryCell : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return self.events.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! EventCell
+        
+        cell.event = events[indexPath.item]
         
         return cell
     }
@@ -98,12 +107,15 @@ extension EventCategoryCell : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 14, bottom: 0, right: 14)
     }
+    
 }
 
 
 extension EventCategoryCell : UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        let selectedEvent = events[indexPath.item]
+        self.delegate.didSelectEvent(event: selectedEvent)
         return true
     }
     
@@ -113,3 +125,5 @@ extension EventCategoryCell : UICollectionViewDelegate, UICollectionViewDelegate
     
     
 }
+
+

@@ -12,6 +12,8 @@ private let reuseIdentifier = "Cell"
 
 class EventsController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
+    var eventByCategories = Array<Array<Event>>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,7 +27,7 @@ class EventsController: UICollectionViewController, UICollectionViewDelegateFlow
 
         navigationItem.title = "Student Events"
         
-        EventsAPI.shared.fetchAllEvents()
+        fetchEvents()
  
         // Do any additional setup after loading the view.
     }
@@ -44,7 +46,7 @@ class EventsController: UICollectionViewController, UICollectionViewDelegateFlow
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 10
+        return eventByCategories.count
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -69,7 +71,18 @@ class EventsController: UICollectionViewController, UICollectionViewDelegateFlow
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! EventCategoryCell
     
+        cell.events = eventByCategories[indexPath.item]
+        cell.delegate = self
         return cell
+    }
+    
+    fileprivate func fetchEvents() {
+        EventsAPI.shared.fetchAllEvents { (events) in
+            self.eventByCategories = events.values.map({ (events) -> [Event] in
+                return events
+            })
+            self.collectionView?.reloadData()
+        }
     }
 
     // MARK: UICollectionViewDelegate
@@ -105,5 +118,11 @@ class EventsController: UICollectionViewController, UICollectionViewDelegateFlow
 
 }
 
+extension EventsController: EventCategoryDelegate {
 
-var urls = ["https://app.resrc.it/O=80/C=AR4x3/S=W200,U/https://www.ticketarena.co.uk/cms_media/images/events/f8d3cd88042e9cb8edb138c68d40600d.1480452248.jpg", "https://app.resrc.it/O=80/C=AR4x3/S=W200,U/https://www.ticketarena.co.uk/cms_media/images/events/5693f0afa74a3e3d7d71e19013cb9757.1491224467.jpg", "https://app.resrc.it/O=80/C=AR4x3/S=W200,U/https://www.ticketarena.co.uk/cms_media/images/events/5b9fd32ed7de39adc5aca65368939530.1484568277.jpg", "https://app.resrc.it/O=80/C=AR4x3/S=W200,U/https://www.ticketarena.co.uk/cms_media/images/events/c6159168dca606e14b374fc02d6641ce.1460715843.png", "https://app.resrc.it/O=80/C=AR4x3/S=W200,U/https://www.ticketarena.co.uk/cms_media/images/events/014c84cb8bf1028e948e16d70e95ba60.1491304747.jpg", "https://app.resrc.it/O=80/C=AR4x3/S=W200,U/https://www.ticketarena.co.uk/cms_media/images/events/949ed9f8a51de8935246f6a77a9f113b.1490971369.png", "https://app.resrc.it/O=80/C=AR4x3/S=W200,U/https://www.ticketarena.co.uk/cms_media/images/events/6c62e80dedf6c322770dc6edea567488.1490009717.jpg","https://app.resrc.it/O=80/C=AR4x3/S=W200,U/https://www.ticketarena.co.uk/cms_media/images/events/edeb414b7311a5cd4d9261fcbddd779d.1482149586.png","https://app.resrc.it/O=80/C=AR4x3/S=W200,U/https://www.ticketarena.co.uk/cms_media/images/events/f8d3cd88042e9cb8edb138c68d40600d.1480452248.jpg", "https://app.resrc.it/O=80/C=AR4x3/S=W200,U/https://www.ticketarena.co.uk/cms_media/images/events/5693f0afa74a3e3d7d71e19013cb9757.1491224467.jpg", "https://app.resrc.it/O=80/C=AR4x3/S=W200,U/https://www.ticketarena.co.uk/cms_media/images/events/5b9fd32ed7de39adc5aca65368939530.1484568277.jpg", "https://app.resrc.it/O=80/C=AR4x3/S=W200,U/https://www.ticketarena.co.uk/cms_media/images/events/c6159168dca606e14b374fc02d6641ce.1460715843.png", "https://app.resrc.it/O=80/C=AR4x3/S=W200,U/https://www.ticketarena.co.uk/cms_media/images/events/014c84cb8bf1028e948e16d70e95ba60.1491304747.jpg", "https://app.resrc.it/O=80/C=AR4x3/S=W200,U/https://www.ticketarena.co.uk/cms_media/images/events/949ed9f8a51de8935246f6a77a9f113b.1490971369.png", "https://app.resrc.it/O=80/C=AR4x3/S=W200,U/https://www.ticketarena.co.uk/cms_media/images/events/6c62e80dedf6c322770dc6edea567488.1490009717.jpg","https://app.resrc.it/O=80/C=AR4x3/S=W200,U/https://www.ticketarena.co.uk/cms_media/images/events/edeb414b7311a5cd4d9261fcbddd779d.1482149586.png" ]
+    func didSelectEvent(event: Event) {
+        let eventPageController = EventsPageController(collectionViewLayout: UICollectionViewFlowLayout())
+        eventPageController.selectedEvent = event
+        navigationController?.pushViewController(eventPageController, animated: true)
+    }
+}

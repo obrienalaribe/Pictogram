@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04387C931EA510060069D90F /* EventsPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04387C921EA510060069D90F /* EventsPageController.swift */; };
+		04387C961EA511B40069D90F /* EventsPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04387C951EA511B40069D90F /* EventsPageHeader.swift */; };
+		04387C981EA515410069D90F /* EventDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04387C971EA515410069D90F /* EventDelegate.swift */; };
+		04387C9E1EA593E50069D90F /* HomeSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04387C9D1EA593E50069D90F /* HomeSearch.swift */; };
 		04E8DA191E96E695007AAE98 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E8DA181E96E695007AAE98 /* MainTabBarController.swift */; };
 		04E8DA201E96F6FC007AAE98 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E8DA1F1E96F6FC007AAE98 /* User.swift */; };
 		04E8DA231E993895007AAE98 /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E8DA221E993895007AAE98 /* KeyboardObserver.swift */; };
@@ -65,6 +69,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04387C921EA510060069D90F /* EventsPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsPageController.swift; sourceTree = "<group>"; };
+		04387C951EA511B40069D90F /* EventsPageHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsPageHeader.swift; sourceTree = "<group>"; };
+		04387C971EA515410069D90F /* EventDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDelegate.swift; sourceTree = "<group>"; };
+		04387C9D1EA593E50069D90F /* HomeSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeSearch.swift; sourceTree = "<group>"; };
 		04E8DA181E96E695007AAE98 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		04E8DA1F1E96F6FC007AAE98 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		04E8DA211E9936BF007AAE98 /* Impact.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Impact.ttf; sourceTree = "<group>"; };
@@ -80,10 +88,10 @@
 		04E8DA381EA44CE7007AAE98 /* EventsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsAPI.swift; sourceTree = "<group>"; };
 		04E8DA3B1EA4C55D007AAE98 /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		04E8DA3D1EA4C777007AAE98 /* Artist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
-		04E8DA431EA4DDCF007AAE98 /* PictogramTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PictogramTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04E8DA431EA4DDCF007AAE98 /* PictogramamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PictogramamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E8DA451EA4DDD0007AAE98 /* PictogramTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictogramTests.swift; sourceTree = "<group>"; };
 		04E8DA471EA4DDD0007AAE98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4319123B1E95496C00CC8E0D /* Pictogram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pictogram.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4319123B1E95496C00CC8E0D /* Pictogramam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pictogramam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4319123E1E95496C00CC8E0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		431912401E95496C00CC8E0D /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		431912431E95496C00CC8E0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -137,6 +145,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04387C941EA5100F0069D90F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				436569B51E9CD73800216D8E /* Event.swift */,
+				04E8DA3B1EA4C55D007AAE98 /* Venue.swift */,
+				04E8DA3D1EA4C777007AAE98 /* Artist.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		04387C991EA5358B0069D90F /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				04387C971EA515410069D90F /* EventDelegate.swift */,
+			);
+			name = Interface;
+			sourceTree = "<group>";
+		};
+		04387C9C1EA593B60069D90F /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				04387C9D1EA593E50069D90F /* HomeSearch.swift */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
 		04E8DA1C1E96F2AD007AAE98 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,13 +189,6 @@
 				04E8DA2B1E9AEBCF007AAE98 /* Post.swift */,
 			);
 			name = Models;
-			sourceTree = "<group>";
-		};
-		04E8DA351E9E5CAF007AAE98 /* Chat */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Chat;
 			sourceTree = "<group>";
 		};
 		04E8DA3A1EA44CF0007AAE98 /* Service */ = {
@@ -196,8 +223,8 @@
 		4319123C1E95496C00CC8E0D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4319123B1E95496C00CC8E0D /* Pictogram.app */,
-				04E8DA431EA4DDCF007AAE98 /* PictogramTests.xctest */,
+				4319123B1E95496C00CC8E0D /* Pictogramam.app */,
+				04E8DA431EA4DDCF007AAE98 /* PictogramamTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -223,7 +250,6 @@
 		431912551E968CC600CC8E0D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				04E8DA351E9E5CAF007AAE98 /* Chat */,
 				43758BDA1E9BE799006B4952 /* Events */,
 				432B764D1E9BCA7100DC07F9 /* Notifications */,
 				432B76461E9BA11400DC07F9 /* Home */,
@@ -267,6 +293,7 @@
 		432B76461E9BA11400DC07F9 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				04387C9C1EA593B60069D90F /* Search */,
 				04E8DA2F1E9D9759007AAE98 /* HomeHeader.swift */,
 				432B76471E9BA13600DC07F9 /* HomeController.swift */,
 				432B76491E9BA32B00DC07F9 /* HomePostCell.swift */,
@@ -296,12 +323,13 @@
 		43758BDA1E9BE799006B4952 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				04387C991EA5358B0069D90F /* Interface */,
+				04387C941EA5100F0069D90F /* Models */,
 				04E8DA3A1EA44CF0007AAE98 /* Service */,
 				436569B91E9CDA2100216D8E /* Category */,
 				43758BDB1E9BE7CD006B4952 /* EventsController.swift */,
-				436569B51E9CD73800216D8E /* Event.swift */,
-				04E8DA3B1EA4C55D007AAE98 /* Venue.swift */,
-				04E8DA3D1EA4C777007AAE98 /* Artist.swift */,
+				04387C921EA510060069D90F /* EventsPageController.swift */,
+				04387C951EA511B40069D90F /* EventsPageHeader.swift */,
 			);
 			name = Events;
 			sourceTree = "<group>";
@@ -389,9 +417,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		04E8DA421EA4DDCF007AAE98 /* PictogramTests */ = {
+		04E8DA421EA4DDCF007AAE98 /* PictogramamTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 04E8DA4A1EA4DDD0007AAE98 /* Build configuration list for PBXNativeTarget "PictogramTests" */;
+			buildConfigurationList = 04E8DA4A1EA4DDD0007AAE98 /* Build configuration list for PBXNativeTarget "PictogramamTests" */;
 			buildPhases = (
 				04E8DA3F1EA4DDCF007AAE98 /* Sources */,
 				04E8DA401EA4DDCF007AAE98 /* Frameworks */,
@@ -402,14 +430,14 @@
 			dependencies = (
 				04E8DA491EA4DDD0007AAE98 /* PBXTargetDependency */,
 			);
-			name = PictogramTests;
+			name = PictogramamTests;
 			productName = PictogramTests;
-			productReference = 04E8DA431EA4DDCF007AAE98 /* PictogramTests.xctest */;
+			productReference = 04E8DA431EA4DDCF007AAE98 /* PictogramamTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		4319123A1E95496B00CC8E0D /* Pictogram */ = {
+		4319123A1E95496B00CC8E0D /* Pictogramam */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 431912501E95496C00CC8E0D /* Build configuration list for PBXNativeTarget "Pictogram" */;
+			buildConfigurationList = 431912501E95496C00CC8E0D /* Build configuration list for PBXNativeTarget "Pictogramam" */;
 			buildPhases = (
 				84F80026E76B18F4C723A5C4 /* [CP] Check Pods Manifest.lock */,
 				431912371E95496B00CC8E0D /* Sources */,
@@ -422,9 +450,9 @@
 			);
 			dependencies = (
 			);
-			name = Pictogram;
+			name = Pictogramam;
 			productName = Pictogram;
-			productReference = 4319123B1E95496C00CC8E0D /* Pictogram.app */;
+			productReference = 4319123B1E95496C00CC8E0D /* Pictogramam.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -450,7 +478,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 431912361E95496B00CC8E0D /* Build configuration list for PBXProject "SLOCO" */;
+			buildConfigurationList = 431912361E95496B00CC8E0D /* Build configuration list for PBXProject "Pictogram" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -463,8 +491,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4319123A1E95496B00CC8E0D /* Pictogram */,
-				04E8DA421EA4DDCF007AAE98 /* PictogramTests */,
+				4319123A1E95496B00CC8E0D /* Pictogramam */,
+				04E8DA421EA4DDCF007AAE98 /* PictogramamTests */,
 			);
 		};
 /* End PBXProject section */
@@ -552,6 +580,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04387C9E1EA593E50069D90F /* HomeSearch.swift in Sources */,
 				04E8DA301E9D9759007AAE98 /* HomeHeader.swift in Sources */,
 				432B76531E9BCAF300DC07F9 /* NotificationCell.swift in Sources */,
 				4319125D1E96A4AD00CC8E0D /* BrandColours.swift in Sources */,
@@ -572,6 +601,7 @@
 				436569B61E9CD73800216D8E /* Event.swift in Sources */,
 				04E8DA321E9D9D4B007AAE98 /* SearchViewController.swift in Sources */,
 				04E8DA341E9DABB8007AAE98 /* AppCache.swift in Sources */,
+				04387C961EA511B40069D90F /* EventsPageHeader.swift in Sources */,
 				04E8DA201E96F6FC007AAE98 /* User.swift in Sources */,
 				437D6A601E9FB0B200A112DB /* EntitySearchTableViewController.swift in Sources */,
 				437D6A5A1E9F866800A112DB /* UserProfileEditController.swift in Sources */,
@@ -580,6 +610,7 @@
 				4319123F1E95496C00CC8E0D /* AppDelegate.swift in Sources */,
 				432B76511E9BCACA00DC07F9 /* NotificationController.swift in Sources */,
 				04E8DA231E993895007AAE98 /* KeyboardObserver.swift in Sources */,
+				04387C981EA515410069D90F /* EventDelegate.swift in Sources */,
 				43C2F8A41E97DB38008144FA /* PhotoSelectorHeader.swift in Sources */,
 				04E8DA3C1EA4C55D007AAE98 /* Venue.swift in Sources */,
 				43758BDC1E9BE7CD006B4952 /* EventsController.swift in Sources */,
@@ -590,6 +621,7 @@
 				43C2F8A01E97A9C4008144FA /* PhotoSelectorController.swift in Sources */,
 				437D6A641E9FCA3700A112DB /* DataFactory.swift in Sources */,
 				43C2F89C1E97864E008144FA /* LoginController.swift in Sources */,
+				04387C931EA510060069D90F /* EventsPageController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,7 +630,7 @@
 /* Begin PBXTargetDependency section */
 		04E8DA491EA4DDD0007AAE98 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4319123A1E95496B00CC8E0D /* Pictogram */;
+			target = 4319123A1E95496B00CC8E0D /* Pictogramam */;
 			targetProxy = 04E8DA481EA4DDD0007AAE98 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -633,7 +665,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.alaribe.PictogramTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pictogram.app/Pictogram";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pictogramam.app/Pictogramam";
 			};
 			name = Debug;
 		};
@@ -647,7 +679,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.alaribe.PictogramTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pictogram.app/Pictogram";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pictogramam.app/Pictogramam";
 			};
 			name = Release;
 		};
@@ -775,15 +807,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		04E8DA4A1EA4DDD0007AAE98 /* Build configuration list for PBXNativeTarget "PictogramTests" */ = {
+		04E8DA4A1EA4DDD0007AAE98 /* Build configuration list for PBXNativeTarget "PictogramamTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				04E8DA4B1EA4DDD0007AAE98 /* Debug */,
 				04E8DA4C1EA4DDD0007AAE98 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		431912361E95496B00CC8E0D /* Build configuration list for PBXProject "SLOCO" */ = {
+		431912361E95496B00CC8E0D /* Build configuration list for PBXProject "Pictogram" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4319124E1E95496C00CC8E0D /* Debug */,
@@ -792,7 +825,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		431912501E95496C00CC8E0D /* Build configuration list for PBXNativeTarget "Pictogram" */ = {
+		431912501E95496C00CC8E0D /* Build configuration list for PBXNativeTarget "Pictogramam" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				431912511E95496C00CC8E0D /* Debug */,
